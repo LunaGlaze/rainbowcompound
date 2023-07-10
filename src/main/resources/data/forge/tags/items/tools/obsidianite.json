@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:obsidianite_sword",
+    "rainbowcompound:obsidianite_pickaxe",
+    "rainbowcompound:obsidianite_axe",
+    "rainbowcompound:obsidianite_shovel",
+    "rainbowcompound:obsidianite_hoe"
+  ]
+}

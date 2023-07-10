@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "rainbowcompound:dynamic_elytra"
+  },
+  "addition": {
+    "item": "rainbowcompound:enderite_ingot"
+  },
+  "result": {
+    "item": "rainbowcompound:dynamic_elytra_ender"
+  }
+}

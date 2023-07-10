@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "rainbowcompound:blazeite_ingot"
+    },
+    {
+      "item": "rainbowcompound:chorusite_ingot"
+    },
+    {
+      "item": "rainbowcompound:enderite_ingot"
+    },
+    {
+      "item": "rainbowcompound:frostite_ingot"
+    },
+    {
+      "item": "rainbowcompound:glowstoneite_ingot"
+    },
+    {
+      "item": "rainbowcompound:slimeite_ingot"
+    },
+    {
+      "item": "rainbowcompound:netherwartite_ingot"
+    },
+    {
+      "item": "rainbowcompound:warpedite_ingot"
+    }
+  ],
+  "result": {
+    "item": "rainbowcompound:strange_colored_ingot"
+  }
+}

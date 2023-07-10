@@ -1,0 +1,18 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    " SES ",
+    "FCMCF",
+    "WS SW"
+  ],
+  "key": {
+    "E":{"item":"rainbowcompound:obsidianite_elytra"},
+    "C":{"item":"create:refined_radiance_casing"},
+    "M":{"item":"rainbowcompound:radiance_mechanism"},
+    "S":{"item":"rainbowcompound:refined_radiance_sheet"},
+    "F":{"item":"create:encased_fan"},
+    "W":{"item":"rainbowcompound:haunted_membrane"}
+  },
+  "result": {"item":"rainbowcompound:dynamic_elytra_radiance"},
+  "acceptMirrored": true
+}

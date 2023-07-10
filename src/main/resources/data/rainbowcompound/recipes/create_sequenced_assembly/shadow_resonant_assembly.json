@@ -1,0 +1,94 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "rainbowcompound:shadow_mechanism"
+  },
+  "transitionalItem": {
+    "item": "rainbowcompound:incomplete_resonant_assembly"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        },
+        {
+          "item": "create:electron_tube"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_resonant_assembly"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:shadow_resonant_assembly",
+      "chance": 90.0
+    },
+    {
+      "item": "rainbowcompound:shadow_mechanism",
+      "chance": 8.0
+    },
+    {
+      "item": "rainbowcompound:integrated_circuit",
+      "chance": 1.0
+    },
+    {
+      "item": "create:precision_resonant_assembly",
+      "chance": 1.0
+    }
+  ],
+  "loops": 2
+}

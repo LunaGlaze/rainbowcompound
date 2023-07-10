@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "rainbowcompound:obsidianite_ingot"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_helmet",
+    "count": 1
+  }
+}

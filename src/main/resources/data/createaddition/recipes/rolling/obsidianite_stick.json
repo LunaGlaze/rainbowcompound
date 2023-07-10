@@ -1,0 +1,10 @@
+{
+	"type":"createaddition:rolling",
+	"input": {
+      	"item": "rainbowcompound:obsidianite_ingot"
+	},
+	"result": {
+		"item": "rainbowcompound:obsidianite_stick",
+		"count": 2
+	}
+}

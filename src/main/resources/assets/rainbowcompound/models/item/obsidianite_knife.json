@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "rainbowcompound:item/obsidianite_knife"
+  }
+}

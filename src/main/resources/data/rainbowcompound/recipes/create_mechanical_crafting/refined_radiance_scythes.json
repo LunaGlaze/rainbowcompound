@@ -1,0 +1,16 @@
+{
+  "type": "create:mechanical_crafting",
+	"pattern": [
+	  "RRR",
+	  "R Z",
+	  "  Z",
+	  "  Z"
+	],
+	"key": {
+	  "Z":{"item":"create:zinc_ingot"},
+	  "R":{"item":"rainbowcompound:refined_radiance_sheet"}
+	},
+	"result": {"item":"rainbowcompound:refined_radiance_scythes",
+	      "count": 1},
+	"acceptMirrored": true
+}

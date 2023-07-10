@@ -1,0 +1,29 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "forge:ingots"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:warpedite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

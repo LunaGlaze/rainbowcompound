@@ -1,0 +1,9 @@
+{
+  "parent": "rainbowcompound:block/encased_large_cogwheel/block_top",
+  "textures": {
+    "casing": "rainbowcompound:block/overcharged_casing",
+    "1": "minecraft:block/stripped_spruce_log_top",
+	"3": "rainbowcompound:block/overcharged_gearbox",
+    "side": "rainbowcompound:block/overcharged_encased_cogwheel_side_connected"
+  }
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "create:block/encased_shaft/block",
+	"textures": {
+		"casing": "rainbowcompound:block/overcharged_casing",
+		"opening": "rainbowcompound:block/overcharged_gearbox"
+	}
+}

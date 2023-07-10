@@ -1,0 +1,14 @@
+{
+    "parent": "item/shield",
+    "textures": {
+        "particle": "rainbowcompound:block/obsdianite_block"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "rainbowcompound:blocking": 1
+            },
+            "model": "rainbowcompound:item/obsdianite_shield_blocking"
+        }
+    ]
+}

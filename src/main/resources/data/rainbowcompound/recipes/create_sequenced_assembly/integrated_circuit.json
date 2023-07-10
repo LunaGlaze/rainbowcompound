@@ -1,0 +1,128 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/lapis"
+  },
+  "transitionalItem": {
+    "item": "rainbowcompound:incomplete_integrated_circuit"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        },
+        {
+          "item": "create:electron_tube"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        },
+        {
+          "tag": "forge:nuggets/gold"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        },
+        {
+          "tag": "forge:nuggets/gold"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_integrated_circuit"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:integrated_circuit",
+      "chance": 120.0
+    },
+    {
+      "item": "rainbowcompound:lapis_sheet",
+      "chance": 8.0
+    },
+    {
+      "item": "create:rose_quartz",
+      "chance": 8.0
+    },
+    {
+      "item": "create:andesite_alloy",
+      "chance": 5.0
+    },
+    {
+      "item": "minecraft:gold_nugget",
+      "chance": 3.0
+    },
+    {
+      "item": "create:electron_tube",
+      "chance": 2.0
+    },
+    {
+      "item": "create:polished_rose_quartz",
+      "chance": 2.0
+    },
+    {
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "loops": 2
+}

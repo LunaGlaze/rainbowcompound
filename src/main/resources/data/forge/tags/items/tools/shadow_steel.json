@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:shadow_steel_sword",
+    "rainbowcompound:shadow_steel_pickaxe",
+    "rainbowcompound:shadow_steel_axe",
+    "rainbowcompound:shadow_steel_shovel",
+    "rainbowcompound:shadow_steel_mattock"
+  ]
+}

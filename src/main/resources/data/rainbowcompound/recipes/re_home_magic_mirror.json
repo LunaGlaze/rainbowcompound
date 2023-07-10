@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "rainbowcompound:home_magic_mirror"
+    },
+    {
+      "item": "rainbowcompound:polished_ender_quartz"
+    }
+  ],
+  "result": {
+    "item": "rainbowcompound:home_magic_mirror"
+  }
+}

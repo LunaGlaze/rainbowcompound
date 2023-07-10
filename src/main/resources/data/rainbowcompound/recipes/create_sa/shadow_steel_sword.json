@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "$"
+  ],
+  "key": {
+    "X": {
+      "item": "create:shadow_steel"
+    },
+    "$": {
+      "item": "create_sa:zinc_handle"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:shadow_steel_sword",
+    "count": 1
+  }
+}

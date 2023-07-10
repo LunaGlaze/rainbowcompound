@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "addition": {
+    "item": "rainbowcompound:obsidianite_upgrade_kit"
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_hoe"
+  }
+}

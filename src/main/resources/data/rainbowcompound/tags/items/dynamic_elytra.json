@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:dynamic_elytra_radiance",
+    "rainbowcompound:dynamic_elytra_feather",
+    "rainbowcompound:dynamic_elytra_fire",
+    "rainbowcompound:dynamic_elytra_ice",
+    "rainbowcompound:dynamic_elytra_66ccff",
+    "rainbowcompound:dynamic_elytra_ender"
+  ]
+}

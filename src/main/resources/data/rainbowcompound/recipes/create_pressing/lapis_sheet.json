@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "minecraft:lapis_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:lapis_sheet"
+    }
+  ]
+}

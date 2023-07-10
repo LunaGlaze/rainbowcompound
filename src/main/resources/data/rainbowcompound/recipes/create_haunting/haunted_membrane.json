@@ -1,0 +1,13 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "item": "minecraft:phantom_membrane"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:haunted_membrane"
+    }
+  ]
+}

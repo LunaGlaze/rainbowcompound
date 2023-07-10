@@ -1,0 +1,31 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "create:sturdy_sheet"
+    },
+    {
+      "item": "create:sturdy_sheet"
+    },
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "fluid": "minecraft:lava",
+      "nbt": {},
+      "amount": 100
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:obsidianite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

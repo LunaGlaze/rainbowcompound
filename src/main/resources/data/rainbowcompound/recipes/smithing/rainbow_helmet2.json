@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_helmet"
+  }
+}

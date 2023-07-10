@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "ASA",
+    "XOX"
+  ],
+  "key": {
+    "A": {
+      "item": "rainbowcompound:obsidianite_ingot"
+    },
+    "X": {
+      "item": "create:sturdy_sheet"
+    },
+    "S": {
+      "item": "create:powdered_obsidian"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_upgrade_kit",
+    "count": 1
+  }
+}

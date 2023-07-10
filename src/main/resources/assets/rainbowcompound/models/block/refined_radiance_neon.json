@@ -1,0 +1,9 @@
+{
+  "parent": "rainbowcompound:custom/refined_radiance_neon",
+  "textures": {
+    "all": "rainbowcompound:block/refined_radiance_neon",
+    "particle": "rainbowcompound:block/refined_radiance_neon",
+    "0": "rainbowcompound:block/refined_radiance_neon",
+    "1": "rainbowcompound:block/nixie_lamp_base"
+  }
+}

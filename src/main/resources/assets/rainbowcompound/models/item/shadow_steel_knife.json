@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "rainbowcompound:item/shadow_steel_knife"
+  }
+}

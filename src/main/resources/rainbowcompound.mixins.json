@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "priority": 1100,
+  "package": "com.LunaGlaze.rainbowcompound.Mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "rainbowcompound.refmap.json",
+  "mixins": [
+    "ChromaticCompoundItemMixin",
+    "ElytraLayerRendererMixin",
+    "JEIMysteriousItemMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

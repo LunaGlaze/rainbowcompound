@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "rainbowcompound:block/refined_radiance_neon",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "rainbowcompound:block/refined_radiance_neon"
+    },
+    "axis=z": {
+      "model": "rainbowcompound:block/refined_radiance_neon",
+      "x": 90
+    }
+  }
+}

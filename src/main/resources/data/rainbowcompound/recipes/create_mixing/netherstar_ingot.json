@@ -1,0 +1,44 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_star"
+    },
+    {
+      "item": "rainbowcompound:rainbow_compound"
+    },
+    {
+      "item": "create:refined_radiance"
+    },
+    {
+      "item": "create:refined_radiance"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    },
+    {
+      "item": "create:experience_nugget"
+    },
+    {
+      "item": "create:experience_nugget"
+    },
+    {
+      "item": "create:experience_nugget"
+    },
+    {
+      "item": "create:experience_nugget"
+    },
+    {
+      "item": "create:asurine"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:netherstar_ingot"
+    }
+  ],
+  "heatRequirement": "superheated"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "rainbowcompound:ender_quartz"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:polished_ender_quartz"
+    }
+  ]
+}

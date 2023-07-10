@@ -1,0 +1,9 @@
+{
+  "parent": "rainbowcompound:block/encased_large_cogwheel/block_bottom",
+  "textures": {
+    "casing": "rainbowcompound:block/shadow_steel_casing",
+    "1": "minecraft:block/stripped_spruce_log_top",
+	"3": "rainbowcompound:block/shadow_steel_gearbox",
+    "side": "rainbowcompound:block/shadow_steel_encased_cogwheel_side_connected"
+  }
+}
