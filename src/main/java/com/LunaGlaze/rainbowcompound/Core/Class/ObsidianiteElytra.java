@@ -49,7 +49,7 @@ public class ObsidianiteElytra extends ModElytraItem implements Wearable {
                 if ((flightTicks) % 25 == 0) {
                     stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(net.minecraft.world.entity.EquipmentSlot.CHEST));
                 }
-                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_FREE_FALL);
+                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_GLIDE);
             }
         }
         return true;

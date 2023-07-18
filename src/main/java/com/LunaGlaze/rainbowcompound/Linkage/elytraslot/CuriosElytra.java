@@ -33,9 +33,6 @@ import java.util.UUID;
 
 public class CuriosElytra {
 
-    private static final AttributeModifier MOD_ELYTRA_MODIFIER = new AttributeModifier(
-            UUID.fromString("92b506f3-0a87-4989-a203-2ed4c7b4c1fd"), "CRC Elytra modifier", 1.0D,
-            AttributeModifier.Operation.ADDITION);
     public static void init(IEventBus modEventBus, IEventBus forgeEventBus) {
         modEventBus.addListener(CuriosElytra::onCommonSetup);
 
@@ -53,13 +50,13 @@ public class CuriosElytra {
                 player.getAttribute(CaelusApi.getInstance().getFlightAttribute());
 
         if (attributeInstance != null) {
-            attributeInstance.removeModifier(MOD_ELYTRA_MODIFIER);
+            attributeInstance.removeModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER);
 
-            if (!attributeInstance.hasModifier(MOD_ELYTRA_MODIFIER)) {
+            if (!attributeInstance.hasModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER)) {
                 CuriosApi.getCuriosHelper()
                         .findEquippedCurio((stack) -> stack.canElytraFly(player), player)
                         .ifPresent(triple -> attributeInstance
-                                .addTransientModifier(MOD_ELYTRA_MODIFIER));
+                                .addTransientModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER));
             }
         }
     }
@@ -83,7 +80,7 @@ public class CuriosElytra {
     }
 
     @OnlyIn(Dist.CLIENT)
-    private static void registerElytraLayer(EntityRenderersEvent event) {
+    public static void registerElytraLayer(EntityRenderersEvent event) {
         if(event instanceof EntityRenderersEvent.AddLayers addLayersEvent){
             EntityModelSet entityModels = addLayersEvent.getEntityModels();
             addLayersEvent.getSkins().forEach(s -> {

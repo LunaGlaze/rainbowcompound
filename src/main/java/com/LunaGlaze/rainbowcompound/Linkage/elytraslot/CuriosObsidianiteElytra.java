@@ -53,7 +53,7 @@ public class CuriosObsidianiteElytra extends CuriosModElytraItem implements ICur
                 if ((flightTicks) % 25 == 0) {
                     stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(net.minecraft.world.entity.EquipmentSlot.CHEST));
                 }
-                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_FREE_FALL);
+                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_GLIDE);
             }
         }
         return true;

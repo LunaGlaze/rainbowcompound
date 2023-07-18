@@ -1,24 +1,26 @@
-modLoader="javafml" #mandatory
-loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+modLoader="javafml"
+loaderVersion="[40,)"
 license="All rights reserved"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
-[[mods]] #mandatory
-modId="rainbowcompound" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="Create: Rainbow Compound" #mandatory
+[[mods]]
+modId="rainbowcompound"
+version="${file.jarVersion}"
+displayName="rainbowcompound"
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
-displayURL="https://www.curseforge.com/minecraft/mc-mods/create-rainbow-compound" #optional
-logoFile="rainbowcompound.png" #optional
-#credits="Thanks to forge, Minecraft, Create and everyone who supported me." #optional
-authors="LunaGlaze" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="rainbowcompound.png"
+credits="Thanks for this example mod goes to Java"
+authors="Love, Cheese and small house plants"
 description='''
-This is a MOD that may be based on Create.
+This is a long form description of the mod. You can write whatever you want here
 
-Added a new and more complicated way to synthesize Chromatic in Create. And added another more advanced Compound.
+Have some lorem ipsum.
 
-There is no mandatory theme for this mod, and I welcome the authors of various integration packages to use mods like CrT to modify it to make it more suitable for your integration package.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis luctus odio eu tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque volutpat ligula eget lacus auctor sagittis. In hac habitasse platea dictumst. Nunc gravida elit vitae sem vehicula efficitur. Donec mattis ipsum et arcu lobortis, eleifend sagittis sem rutrum. Cras pharetra quam eget posuere fermentum. Sed id tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.rainbowcompound]] #optional
@@ -27,7 +29,7 @@ modId="forge" #mandatory
 # Does this dependency have to exist - if not, ordering below must be specified
 mandatory=true #mandatory
 # The version range of the dependency
-versionRange="[40,)" #mandatory
+versionRange="[43,)" #mandatory
 # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
 ordering="NONE"
 # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -37,18 +39,18 @@ side="BOTH"
 modId="minecraft"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="[1.18.2,1.19)"
+versionRange="[1.19.2,1.20)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.rainbowcompound]]
-    modId="create"
-    mandatory=true
-    versionRange="[0.5.1.b,)"
-    ordering="NONE"
-    side="BOTH"
+modId="create"
+mandatory=true
+versionRange="[0.5.1.b,)"
+ordering="NONE"
+side="BOTH"
 [[dependencies.rainbowcompound]]
-    modId="curios"
-    mandatory=true
-    versionRange="[1.18.2-5.0.6.0,)"
-    ordering="NONE"
-    side="BOTH"
+modId="curios"
+mandatory=true
+versionRange="[1.19.2-3.0.0.6,)"
+ordering="NONE"
+side="BOTH"

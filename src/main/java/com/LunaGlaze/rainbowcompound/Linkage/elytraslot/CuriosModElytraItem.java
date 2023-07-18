@@ -10,6 +10,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -28,10 +29,14 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CuriosModElytraItem extends ModElytraItem implements ICurio {
 
+    public static final AttributeModifier MOD_ELYTRA_MODIFIER =
+            new AttributeModifier(UUID.fromString("92b506f3-0a87-4989-a203-2ed4c7b4c1fd"),
+                    "CRC Elytra modifier", 1.0D, AttributeModifier.Operation.ADDITION);
     private final ItemStack stack = this.getStack();
     public CuriosModElytraItem(Item.Properties pProperties) {
         super(pProperties);

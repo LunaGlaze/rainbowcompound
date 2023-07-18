@@ -1,5 +1,6 @@
 package com.LunaGlaze.rainbowcompound.Linkage.elytraslot.ElytraLayer;
 
+import com.LunaGlaze.rainbowcompound.Linkage.elytraslot.CuriosModElytraItem;
 import com.LunaGlaze.rainbowcompound.Projects.Events.Render.ObsidianiteElytraLayer;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
 import com.LunaGlaze.rainbowcompound.LunaUtils;
@@ -7,6 +8,7 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,7 +19,9 @@ import top.theillusivec4.curios.api.CuriosApi;
 import java.util.Optional;
 
 @OnlyIn(Dist.CLIENT)
-public class ObsidianiteElytraLayerAdd extends ObsidianiteElytraLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+public class ObsidianiteElytraLayerAdd
+        extends ObsidianiteElytraLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+
     public ObsidianiteElytraLayerAdd(
             RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> rendererIn,
             EntityModelSet modelSet) {
@@ -48,7 +52,7 @@ public class ObsidianiteElytraLayerAdd extends ObsidianiteElytraLayer<AbstractCl
                 CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_flandre.get(), entity);
         return eqCurio1.isPresent() ||eqCurio2.isPresent() ||eqCurio3.isPresent() ||eqCurio4.isPresent() ||
                 eqCurio5.isPresent() ||eqCurio6.isPresent() ||eqCurio7.isPresent() ||eqCurio8.isPresent() ||
-                eqCurio9.isPresent() ||eqCurio10.isPresent();
+                eqCurio9.isPresent() ||eqCurio10.isPresent() || stack.getItem() instanceof CuriosModElytraItem;
     }
 
     @Override

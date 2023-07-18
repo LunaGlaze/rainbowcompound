@@ -27,10 +27,9 @@ public class GoldenAppleStew extends ConsumableItem {
             .alwaysEat()
             .build();
     public GoldenAppleStew() {
-        super(new Properties().food(food).tab(CreativeModeTabGroup.group).rarity(Rarity.RARE),true);
+        super(new Properties().food(food).tab(CreativeModeTabGroup.group).rarity(Rarity.RARE).craftRemainder(Items.BOWL),true);
     }
 
-    @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
         return new ItemStack(Items.BOWL);
     }

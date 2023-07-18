@@ -7,7 +7,6 @@ import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -82,6 +81,6 @@ public class RadianceRing extends Item implements ICurioItem {
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced){
-        tooltip.add(new TranslatableComponent(LunaUtils.MOD_ID + ".tooltip.radiancering", new Object[0]).withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable(LunaUtils.MOD_ID + ".tooltip.radiancering").withStyle(ChatFormatting.BLUE));
     }
 }

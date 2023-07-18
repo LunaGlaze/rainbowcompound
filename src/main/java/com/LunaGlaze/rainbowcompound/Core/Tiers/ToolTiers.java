@@ -14,7 +14,7 @@ public enum ToolTiers implements Tier {
     Obsidianite(3, 2048, 9.0F, 3.75F, 15, () -> {
         return Ingredient.of(Items.OBSIDIAN);
     }),
-    RAINBOW(5, 3072, 12.0F, 5.0F + LunaConfig.RAINBOW_TOOL_Damage.get(), 25, () -> {
+    RAINBOW(5, 3072, 12.0F, 5.0F, 25, () -> {
         return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
     }),
     Shadowsteel(3,2303,10.0F,3.5F,15,() -> {

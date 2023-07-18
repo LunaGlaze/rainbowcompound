@@ -9,7 +9,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -25,10 +24,11 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolActions;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -43,19 +43,18 @@ public class ShadowSteelMattock extends HoeItem {
         super(ToolTiers.Shadowsteeltool, 1, -3f, new Properties().tab(CreativeModeTabGroup.group).rarity(Rarity.UNCOMMON));
     }
 
-    @SuppressWarnings("removal")
     public InteractionResult useOn(UseOnContext pContext) {
-        int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(pContext);
-        if (hook != 0) return hook > 0 ? InteractionResult.SUCCESS : InteractionResult.FAIL;
         Level level = pContext.getLevel();
         BlockPos blockpos = pContext.getClickedPos();
+        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, ToolActions.HOE_TILL, false);
+        Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of((ctx) -> {
+            return true;
+        }, changeIntoState(toolModifiedState));
         Player player = pContext.getPlayer();
         BlockState blockstate = level.getBlockState(blockpos);
-        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.HOE_TILL, false);
-        Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
-        Optional<BlockState> optional = Optional.ofNullable(blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.AXE_STRIP, false));
-        Optional<BlockState> optional1 = optional.isPresent() ? Optional.empty() : Optional.ofNullable(blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.AXE_SCRAPE, false));
-        Optional<BlockState> optional2 = optional.isPresent() || optional1.isPresent() ? Optional.empty() : Optional.ofNullable(blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.AXE_WAX_OFF, false));
+        Optional<BlockState> optional = Optional.ofNullable(blockstate.getToolModifiedState(pContext, ToolActions.AXE_STRIP, false));
+        Optional<BlockState> optional1 = optional.isPresent() ? Optional.empty() : Optional.ofNullable(blockstate.getToolModifiedState(pContext, ToolActions.AXE_SCRAPE, false));
+        Optional<BlockState> optional2 = !optional.isPresent() && !optional1.isPresent() ? Optional.ofNullable(blockstate.getToolModifiedState(pContext, ToolActions.AXE_WAX_OFF, false)) : Optional.empty();
         ItemStack itemstack = pContext.getItemInHand();
         Optional<BlockState> optional3 = Optional.empty();
         if (pair == null) {
@@ -77,7 +76,8 @@ public class ShadowSteelMattock extends HoeItem {
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
                 }
 
-                level.setBlock(blockpos, optional3.get(), 11);
+                level.setBlock(blockpos, (BlockState)optional3.get(), 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, (BlockState)optional3.get()));
                 if (player != null) {
                     itemstack.hurtAndBreak(1, player, (p_150686_) -> {
                         p_150686_.broadcastBreakEvent(pContext.getHand());
@@ -86,42 +86,11 @@ public class ShadowSteelMattock extends HoeItem {
 
                 return InteractionResult.sidedSuccess(level.isClientSide);
             } else {
-                if (pContext.getClickedFace() == Direction.DOWN) {
-                    return InteractionResult.PASS;
-                } else {
-                    BlockState blockstate1 = blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
-                    BlockState blockstate2 = null;
-                    if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
-                        level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        blockstate2 = blockstate1;
-                    } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
-                        if (!level.isClientSide()) {
-                            level.levelEvent((Player)null, 1009, blockpos, 0);
-                        }
-
-                        CampfireBlock.dowse(pContext.getPlayer(), level, blockpos, blockstate);
-                        blockstate2 = blockstate.setValue(CampfireBlock.LIT, Boolean.valueOf(false));
-                    }
-
-                    if (blockstate2 != null) {
-                        if (!level.isClientSide) {
-                            level.setBlock(blockpos, blockstate2, 11);
-                            if (player != null) {
-                                pContext.getItemInHand().hurtAndBreak(1, player, (p_43122_) -> {
-                                    p_43122_.broadcastBreakEvent(pContext.getHand());
-                                });
-                            }
-                        }
-
-                        return InteractionResult.sidedSuccess(level.isClientSide);
-                    } else {
-                        return InteractionResult.PASS;
-                    }
-                }
+                return InteractionResult.PASS;
             }
         } else {
-            Predicate<UseOnContext> predicate = pair.getFirst();
-            Consumer<UseOnContext> consumer = pair.getSecond();
+            Predicate<UseOnContext> predicate = (Predicate)pair.getFirst();
+            Consumer<UseOnContext> consumer = (Consumer)pair.getSecond();
             if (predicate.test(pContext)) {
                 level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!level.isClientSide) {
@@ -153,7 +122,8 @@ public class ShadowSteelMattock extends HoeItem {
                         CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
                     }
 
-                    level.setBlock(blockpos, optional3.get(), 11);
+                    level.setBlock(blockpos, (BlockState)optional3.get(), 11);
+                    level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, (BlockState)optional3.get()));
                     if (player != null) {
                         itemstack.hurtAndBreak(1, player, (p_150686_) -> {
                             p_150686_.broadcastBreakEvent(pContext.getHand());
@@ -162,38 +132,7 @@ public class ShadowSteelMattock extends HoeItem {
 
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 } else {
-                    if (pContext.getClickedFace() == Direction.DOWN) {
-                        return InteractionResult.PASS;
-                    } else {
-                        BlockState blockstate1 = blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
-                        BlockState blockstate2 = null;
-                        if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
-                            level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            blockstate2 = blockstate1;
-                        } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
-                            if (!level.isClientSide()) {
-                                level.levelEvent((Player)null, 1009, blockpos, 0);
-                            }
-
-                            CampfireBlock.dowse(pContext.getPlayer(), level, blockpos, blockstate);
-                            blockstate2 = blockstate.setValue(CampfireBlock.LIT, Boolean.valueOf(false));
-                        }
-
-                        if (blockstate2 != null) {
-                            if (!level.isClientSide) {
-                                level.setBlock(blockpos, blockstate2, 11);
-                                if (player != null) {
-                                    pContext.getItemInHand().hurtAndBreak(1, player, (p_43122_) -> {
-                                        p_43122_.broadcastBreakEvent(pContext.getHand());
-                                    });
-                                }
-                            }
-
-                            return InteractionResult.sidedSuccess(level.isClientSide);
-                        } else {
-                            return InteractionResult.PASS;
-                        }
-                    }
+                    return InteractionResult.PASS;
                 }
             }
         }
@@ -223,7 +162,7 @@ public class ShadowSteelMattock extends HoeItem {
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced){
-        tooltip.add(new TranslatableComponent(LunaUtils.MOD_ID + ".tooltip.shadowstelltoll", new Object[0]).withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(LunaUtils.MOD_ID + ".tooltip.shadowstelltoll").withStyle(ChatFormatting.DARK_PURPLE));
     }
 
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {

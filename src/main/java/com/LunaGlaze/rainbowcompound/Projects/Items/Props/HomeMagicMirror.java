@@ -5,7 +5,6 @@ import com.LunaGlaze.rainbowcompound.LunaUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -69,7 +68,7 @@ public class HomeMagicMirror extends Item {
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced){
-        tooltip.add(new TranslatableComponent(LunaUtils.MOD_ID + ".tooltip.homemagicmirror", new Object[0]).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable(LunaUtils.MOD_ID + ".tooltip.homemagicmirror").withStyle(ChatFormatting.GRAY));
     }
 
 }

@@ -26,7 +26,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("refined_radiance_encased_shaft", p -> new ModEncasedShaftBlock(p, AllBlocks.REFINED_RADIANCE_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL).lightLevel((p_152686_) -> {return 12;}))
                     .transform(BuilderTransformers.encasedShaft("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                     .transform(axeOrPickaxe())
                     .register();
 
@@ -34,7 +34,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("shadow_steel_encased_shaft", p -> new ModEncasedShaftBlock(p, AllBlocks.SHADOW_STEEL_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.encasedShaft("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                     .transform(axeOrPickaxe())
                     .register();
 
@@ -42,7 +42,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("overcharged_encased_shaft", p -> new ModEncasedShaftBlock(p, BlockRegistryTterrag.OVERCHARGED_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL).lightLevel((p_152686_) -> {return 8;}))
                     .transform(BuilderTransformers.encasedShaft("overcharged", () -> omni("overcharged_casing")))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                     .transform(axeOrPickaxe())
                     .register();
 
@@ -51,7 +51,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("refined_radiance_encased_cogwheel", p -> new ModEncasedCogwheelBlock(p, false, AllBlocks.REFINED_RADIANCE_CASING::get))
                     .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN).lightLevel((p_152686_) -> {return 12;}))
                     .transform(BuilderTransformers.encasedCogwheel("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(AllSpriteShifts.REFINED_RADIANCE_CASING,
                             Couple.create(ModNewSpriteShifts.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE,
                                     ModNewSpriteShifts.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE))))
@@ -62,7 +62,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("shadow_steel_encased_cogwheel", p -> new ModEncasedCogwheelBlock(p, false, AllBlocks.SHADOW_STEEL_CASING::get))
                     .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
                     .transform(BuilderTransformers.encasedCogwheel("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(AllSpriteShifts.SHADOW_STEEL_CASING,
                             Couple.create(ModNewSpriteShifts.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE,
                                     ModNewSpriteShifts.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE))))
@@ -73,7 +73,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("overcharged_encased_cogwheel", p -> new ModEncasedCogwheelBlock(p, false, BlockRegistryTterrag.OVERCHARGED_CASING::get))
                     .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN).lightLevel((p_152686_) -> {return 8;}))
                     .transform(BuilderTransformers.encasedCogwheel("overcharged", () -> omni("overcharged_casing")))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(omni("overcharged_casing"),
                             Couple.create(ModNewSpriteShifts.OVERCHARGED_ENCASED_COGWHEEL_SIDE,
                                     ModNewSpriteShifts.OVERCHARGED_ENCASED_COGWHEEL_OTHERSIDE))))
@@ -85,7 +85,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("refined_radiance_encased_large_cogwheel", p -> new ModEncasedCogwheelBlock(p, true, AllBlocks.REFINED_RADIANCE_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL).lightLevel((p_152686_) -> {return 12;}))
                     .transform(BuilderTransformers.encasedLargeCogwheel("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                     .transform(axeOrPickaxe())
                     .register();
 
@@ -93,7 +93,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("shadow_steel_encased_large_cogwheel", p -> new ModEncasedCogwheelBlock(p, true, AllBlocks.SHADOW_STEEL_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.encasedLargeCogwheel("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                     .transform(axeOrPickaxe())
                     .register();
 
@@ -101,7 +101,7 @@ public class CasingEncasedBlocks {
             REGISTRATE.block("overcharged_encased_large_cogwheel", p -> new ModEncasedCogwheelBlock(p, true, BlockRegistryTterrag.OVERCHARGED_CASING::get))
                     .properties(p -> p.color(MaterialColor.PODZOL).lightLevel((p_152686_) -> {return 8;}))
                     .transform(BuilderTransformers.encasedLargeCogwheel("refined_radiance", () -> omni("overcharged_casing")))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
+                    //.transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                     .transform(axeOrPickaxe())
                     .register();
 

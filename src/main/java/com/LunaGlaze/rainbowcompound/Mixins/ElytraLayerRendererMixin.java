@@ -1,9 +1,13 @@
 package com.LunaGlaze.rainbowcompound.Mixins;
 
+import com.LunaGlaze.rainbowcompound.Linkage.elytraslot.ElytraLayer.ObsidianiteElytraLayerAdd;
 import com.LunaGlaze.rainbowcompound.Projects.Events.Render.ObsidianiteElytraLayer;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
