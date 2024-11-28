@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "rainbowcompound:dynamic_elytra"
+  },
+  "addition": {
+    "item": "rainbowcompound:integrated_circuit"
+  },
+  "result": {
+    "item": "rainbowcompound:dynamic_elytra_66ccff"
+  }
+}

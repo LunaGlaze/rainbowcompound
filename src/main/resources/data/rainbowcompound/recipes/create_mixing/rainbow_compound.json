@@ -1,0 +1,38 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "rainbowcompound:obsidianite_ingot"
+    },
+    {
+      "item": "create:refined_radiance"
+    },
+    {
+      "item": "create:refined_radiance"
+    },
+    {
+      "item": "create:shadow_steel"
+    },
+    {
+      "item": "create:shadow_steel"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:tinted_glass"
+    },
+    {
+      "item": "rainbowcompound:haunted_membrane"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:rainbow_compound"
+    }
+  ],
+  "heatRequirement": "superheated"
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:rainbow_sword",
+    "rainbowcompound:rainbow_pickaxe",
+    "rainbowcompound:rainbow_axe",
+    "rainbowcompound:rainbow_shovel",
+    "rainbowcompound:rainbow_hoe"
+  ]
+}

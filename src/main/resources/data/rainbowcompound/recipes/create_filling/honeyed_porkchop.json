@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "fluidTag": "forge:honey",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:honeyed_porkchop"
+    }
+  ]
+}

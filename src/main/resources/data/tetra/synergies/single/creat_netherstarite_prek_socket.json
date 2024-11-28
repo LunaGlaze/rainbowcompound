@@ -1,0 +1,42 @@
+[
+  {
+    "modules": ["single/earthpiercer"],
+    "moduleVariants": ["single_perk_socket_0/socket_creat_netherstarite"],
+    "visibilityKey": "single_perk_socket_0/socket_creat_netherstarite",
+    "tools": {
+      "pickaxe_dig": 2
+    }
+  },
+  {
+    "modules": ["single/unbound_earthpiercer"],
+    "moduleVariants": ["single_perk_socket_0/socket_creat_netherstarite"],
+    "visibilityKey": "single_perk_socket_0/socket_creat_netherstarite",
+    "tools": {
+      "pickaxe_dig": 2
+    }
+  },
+  {
+    "improvements": ["unbound_earthpiercer/wood_attunement"],
+    "moduleVariants": ["single_perk_socket_0/socket_creat_netherstarite"],
+    "visibilityKey": "single_perk_socket_0/socket_creat_netherstarite",
+    "tools": {
+      "axe_dig": 2
+    }
+  },
+  {
+    "improvements": ["unbound_earthpiercer/earth_attunement"],
+    "moduleVariants": ["single_perk_socket_0/socket_creat_netherstarite"],
+    "visibilityKey": "single_perk_socket_0/socket_creat_netherstarite",
+    "tools": {
+      "shovel_dig": 2
+    }
+  },
+  {
+    "modules": ["single/basic_shovel"],
+    "moduleVariants": ["single_perk_socket_0/socket_creat_netherstarite"],
+    "visibilityKey": "single_perk_socket_0/socket_creat_netherstarite",
+    "tools": {
+      "shovel_dig": 2
+    }
+  }
+]

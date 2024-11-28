@@ -1,0 +1,19 @@
+{
+  "type": "create:mechanical_crafting",
+	"pattern": [
+	  " B ",
+	  "GRG",
+	  "GTG",
+	  "GRG",
+	  " B "
+	],
+	"key": {
+	  "B":{"item":"create:brass_sheet"},
+	  "G":{"tag":"forge:glass"},
+	  "T":{"item":"create:electron_tube"},
+	  "R":{"item":"create:refined_radiance"}
+	},
+	"result": {"item":"rainbowcompound:refined_radiance_neon",
+	      "count": 4},
+	"acceptMirrored": true
+}

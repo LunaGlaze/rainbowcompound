@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "drinks",
+  "ingredients": [
+    {
+      "item": "create:shadow_steel"
+    },
+    {
+      "item": "minecraft:grass"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "result": {
+    "item": "rainbowcompound:shadow_steel_tea"
+  },
+  "container": {
+    "item": "create:builders_tea"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

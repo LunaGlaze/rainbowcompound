@@ -1,0 +1,19 @@
+{
+  "type": "create:mechanical_crafting",
+	"pattern": [
+	  " R ",
+	  "GEG",
+	  "PTP",
+	  "GEG",
+	  " R "
+	],
+	"key": {
+	  "E":{"item":"rainbowcompound:enderite_ingot"},
+	  "G":{"tag":"forge:glass"},
+	  "P":{"item":"rainbowcompound:polished_ender_quartz"},
+	  "T":{"item":"rainbowcompound:shadow_mechanism"},
+	  "R":{"item":"rainbowcompound:refined_radiance_sheet"}
+	},
+	"result": {"item":"rainbowcompound:home_magic_mirror"},
+	"acceptMirrored": true
+}

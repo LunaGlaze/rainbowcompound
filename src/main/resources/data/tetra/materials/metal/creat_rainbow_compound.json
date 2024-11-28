@@ -1,0 +1,27 @@
+{
+  "key" : "creat_rainbow_compound",
+  "category" : "metal",
+  "primary" : 8,
+  "secondary" : 3.8,
+  "tertiary" : 4,
+  "durability" : 3072,
+  "integrityCost" : 2,
+  "integrityGain" : 7,
+  "magicCapacity" : 160,
+  "toolLevel" : "minecraft:netherite",
+  "toolEfficiency" : 12,
+  "tints" : {
+    "glyph" : "fb91aa",
+    "texture" : "fb91aa"
+  },
+  "textures" : [ "metal", "default" ],
+  "material" : {
+    "items" : [ "rainbowcompound:rainbow_compound" ]
+  },
+  "effects" : {
+    "stabilizing" : 8
+  },
+  "requiredTools" : {
+    "hammer_dig" : "minecraft:netherite"
+  }
+}
