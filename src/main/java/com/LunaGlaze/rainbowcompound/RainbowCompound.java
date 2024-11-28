@@ -7,11 +7,9 @@ import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.elytraslot.CuriosElytra;
 import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.farmersdelightItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlockRegistryTterrag;
-import com.LunaGlaze.rainbowcompound.Projects.Blocks.EncasedBlock.CasingEncasedBlocks;
 import com.LunaGlaze.rainbowcompound.Projects.Effect.EffectRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ElytraItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Foods.FoodsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Props.PropsItemRegistry;
@@ -19,7 +17,6 @@ import com.LunaGlaze.rainbowcompound.Projects.Items.SequencedAssembly.Incomplete
 import com.LunaGlaze.rainbowcompound.Projects.Items.Tools.ToolsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksBlockRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.TileEntities.EncasedTileEntities;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,26 +31,22 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class RainbowCompound {
 
     public static boolean isFarmersDelightLoaded = false;
-    public static boolean isCuriousElytraLoaded = false;
     public static boolean isCreateCraftAddLoaded = false;
 
     public RainbowCompound(){
         IEventBus registereventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         isFarmersDelightLoaded = ModList.get().isLoaded("farmersdelight");
-        isCuriousElytraLoaded = ModList.get().isLoaded("curiouselytra");
         isCreateCraftAddLoaded = ModList.get().isLoaded("createaddition");
 
         onCreate();
+        CuriosElytra.init(registereventBus, forgeEventBus);
 
         FoodsItemRegistry.ITEMS.register(registereventBus);
         ItemsItemRegistry.ITEMS.register(registereventBus);
         ToolsItemRegistry.ITEMS.register(registereventBus);
         ArmorsItemRegistry.ITEMS.register(registereventBus);
-        if(isCuriousElytraLoaded){
-            CuriosElytra.init(registereventBus, forgeEventBus);
-            CuriosElytraItemRegistry.ITEMS.register(registereventBus);
-        }else {ElytraItemRegistry.ITEMS.register(registereventBus);}
+        CuriosElytraItemRegistry.ITEMS.register(registereventBus);
         PropsItemRegistry.ITEMS.register(registereventBus);
         BlocksBlockRegistry.BLOCKS.register(registereventBus);
         BlocksItemRegistry.ITEMS.register(registereventBus);
@@ -85,7 +78,5 @@ public class RainbowCompound {
 
         BlockRegistryTterrag.register();
         IncompleteItems.register();
-        CasingEncasedBlocks.register();
-        EncasedTileEntities.register();
     }
 }

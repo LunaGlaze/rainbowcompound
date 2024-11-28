@@ -6,10 +6,11 @@
   "refmap": "rainbowcompound.refmap.json",
   "mixins": [
     "ChromaticCompoundItemMixin",
-    "ElytraLayerRendererMixin",
     "JEIMysteriousItemMixin"
   ],
-  "client": [],
+  "client": [
+    "ElytraLayerRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },

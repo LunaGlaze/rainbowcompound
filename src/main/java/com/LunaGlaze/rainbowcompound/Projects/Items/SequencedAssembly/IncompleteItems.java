@@ -12,7 +12,8 @@ public class IncompleteItems {
             incomplete_radiance_mechanism = sequencedIngredient("incomplete_radiance_mechanism"),
             incomplete_shadow_mechanism = sequencedIngredient("incomplete_shadow_mechanism"),
             incomplete_radiance_resonant_assembly = sequencedIngredient("incomplete_radiance_resonant_assembly"),
-            incomplete_shadow_resonant_assembly = sequencedIngredient("incomplete_shadow_resonant_assembly");
+            incomplete_shadow_resonant_assembly = sequencedIngredient("incomplete_shadow_resonant_assembly"),
+            incomplete_test = sequencedIngredient("incomplete_test");
 
     private static ItemEntry<SequencedAssemblyItem> sequencedIngredient(String name) {
         return REGISTRATE.item(name, SequencedAssemblyItem::new)

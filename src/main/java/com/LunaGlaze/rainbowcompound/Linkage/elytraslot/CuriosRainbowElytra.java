@@ -1,7 +1,5 @@
 package com.LunaGlaze.rainbowcompound.Linkage.elytraslot;
 
-import com.LunaGlaze.rainbowcompound.Core.Class.DynamicElytra;
-import com.LunaGlaze.rainbowcompound.Core.Class.ModElytraItem;
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
 import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;

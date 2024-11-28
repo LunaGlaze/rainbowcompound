@@ -16,8 +16,8 @@ public enum CRCArmorMaterials implements ArmorMaterial {
     Obsidianite("obsidianite", 38, new int[]{3, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.15F, () -> {
         return Ingredient.of(Items.OBSIDIAN);
     }),
-    RAINBOW("rainbow", 48, new int[]{4 + LunaConfig.RAINBOW_ARMOR_Defense.get(), 7 + LunaConfig.RAINBOW_ARMOR_Defense.get(), 9 + LunaConfig.RAINBOW_ARMOR_Defense.get(), 4 + LunaConfig.RAINBOW_ARMOR_Defense.get()},
-            25, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F + LunaConfig.RAINBOW_ARMOR_Toughness.get(), 0.1F, () -> {
+    RAINBOW("rainbow", 48, new int[]{4 , 7 , 9 , 4 },
+            25, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F , 0.1F, () -> {
         return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
     });
 

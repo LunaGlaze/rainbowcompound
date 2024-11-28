@@ -14,16 +14,16 @@ public enum ToolTiers implements Tier {
     Obsidianite(3, 2048, 9.0F, 3.75F, 15, () -> {
         return Ingredient.of(Items.OBSIDIAN);
     }),
-    RAINBOW(5, 3072, 12.0F, 5.0F + LunaConfig.RAINBOW_TOOL_Damage.get(), 25, () -> {
+    RAINBOW(5, 3072, 12.0F, 5.0F , 25, () -> {
         return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
     }),
-    Shadowsteel(3,2303,10.0F,3.5F,15,() -> {
+    Shadowsteel(4,2303,10.0F,4F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    Shadowsteeltool(3,2303,10.0F,3F,15,() -> {
+    Shadowsteeltool(4,2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    RefinedRadiance(3,2303,10.0F,3F,15,() -> {
+    RefinedRadiance(4,2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.REFINED_RADIANCE.get());
     });
     private final int level;
