@@ -1,0 +1,27 @@
+{
+  "key" : "creat_netherstar_ingot",
+  "category" : "metal",
+  "primary" : 9,
+  "secondary" : 4,
+  "tertiary" : 4.2,
+  "durability" : 4096,
+  "integrityCost" : 2,
+  "integrityGain" : 9,
+  "magicCapacity" : 240,
+  "toolLevel" : 7,
+  "toolEfficiency" : 15,
+  "tints" : {
+    "glyph" : "e8eef2",
+    "texture" : "e8eef2"
+  },
+  "textures" : [  "shiny", "metal", "default" ],
+  "material" : {
+    "items" : [ "rainbowcompound:netherstar_ingot" ]
+  },
+  "effects" : {
+    "stabilizing" : 8
+  },
+  "requiredTools" : {
+    "hammer_dig" : "minecraft:netherite"
+  }
+}

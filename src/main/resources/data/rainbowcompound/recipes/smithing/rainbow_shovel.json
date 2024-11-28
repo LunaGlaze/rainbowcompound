@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "rainbowcompound:obsidianite_shovel"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_shovel"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "rainbowcompound:obsidianite_pickaxe"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_pickaxe"
+  }
+}

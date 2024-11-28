@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "rainbowcompound:dynamic_elytra"
+  },
+  "addition": {
+    "item": "create:white_sail"
+  },
+  "result": {
+    "item": "rainbowcompound:dynamic_elytra_feather"
+  }
+}

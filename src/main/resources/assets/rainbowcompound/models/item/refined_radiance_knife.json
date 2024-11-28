@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "rainbowcompound:item/refined_radiance_knife"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "socket_creat_netherstarite",
+  "hidden": true,
+  "category": "socket",
+  "primary": 0,
+  "secondary": 0,
+  "tertiary": 0,
+  "durability": 768,
+  "integrityCost": 1,
+  "integrityGain": 0,
+  "magicCapacity": 0,
+  "toolLevel": 0,
+  "toolEfficiency": 2,
+  "effects": {
+    "intuit": 1,
+    "**generic.attack_damage": 0.1,
+    "criticalStrike": [10, 2]
+  },
+  "tints": {
+    "glyph": "e8eef2",
+    "texture": "e2dcd3"
+  },
+  "textures": ["pristine"],
+  "experienceCost": 2,
+  "material": {
+    "items": ["rainbowcompound:netherstar_ingot"]
+  }
+}

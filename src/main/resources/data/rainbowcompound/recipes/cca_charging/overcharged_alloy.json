@@ -1,0 +1,12 @@
+{
+  "type":"createaddition:charging",
+  "input": {
+    "item": "create:chromatic_compound",
+    "count": 1
+  },
+  "result": {
+    "item": "rainbowcompound:overcharged_alloy",
+    "count": 1
+  },
+  "energy": 16777216
+}

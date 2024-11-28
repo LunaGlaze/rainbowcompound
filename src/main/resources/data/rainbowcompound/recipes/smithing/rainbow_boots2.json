@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_boots"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_boots"
+  }
+}

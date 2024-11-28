@@ -1,0 +1,41 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "tag": "forge:nuggets/copper"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:glowstoneite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

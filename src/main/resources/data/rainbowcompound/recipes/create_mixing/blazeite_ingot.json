@@ -1,0 +1,38 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/brass"
+    },
+    {
+      "tag": "forge:nuggets/brass"
+    },
+    {
+      "tag": "forge:nuggets/brass"
+    },
+    {
+      "tag": "forge:nuggets/copper"
+    },
+    {
+      "tag": "forge:nuggets/copper"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:blazeite_ingot"
+    }
+  ],
+  "heatRequirement": "heated"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X",
+    "$ "
+  ],
+  "key": {
+    "X": {
+      "item": "create:refined_radiance"
+    },
+    "$": {
+      "item": "create_sa:zinc_handle"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:refined_radiance_knife",
+    "count": 1
+  }
+}

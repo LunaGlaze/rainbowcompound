@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "rainbowcompound:item/obsidianite_bow_1"
+    }
+}

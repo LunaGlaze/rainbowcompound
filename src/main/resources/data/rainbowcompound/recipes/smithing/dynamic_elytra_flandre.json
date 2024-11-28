@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "rainbowcompound:dynamic_elytra_rainbow"
+  },
+  "addition": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "item": "rainbowcompound:dynamic_elytra_flandre"
+  }
+}

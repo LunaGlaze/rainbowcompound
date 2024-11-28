@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:elytra"
+  },
+  "addition": {
+    "item": "rainbowcompound:obsidianite_ingot"
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_elytra"
+  }
+}

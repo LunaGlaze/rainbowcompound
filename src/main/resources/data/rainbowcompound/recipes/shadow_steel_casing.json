@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "CSC",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "rainbowcompound:shadow_steel_sheet"
+    },
+    "S": {
+      "tag": "forge:obsidian"
+    }
+  },
+  "result": {
+    "item": "create:shadow_steel_casing",
+    "count": 4
+  }
+}

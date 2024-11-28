@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OX",
+    "XA"
+  ],
+  "key": {
+    "X": {
+      "item": "create:sturdy_sheet"
+    },
+    "A": {
+      "item": "rainbowcompound:rainbow_compound"
+    },
+    "O": {
+      "item": "rainbowcompound:obsidianite_upgrade_kit"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_upgrade_kit",
+    "count": 1
+  }
+}

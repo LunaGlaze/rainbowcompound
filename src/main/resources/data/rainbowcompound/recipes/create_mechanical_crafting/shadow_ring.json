@@ -1,0 +1,17 @@
+{
+  "type": "create:mechanical_crafting",
+	"pattern": [
+	  "RAC",
+	  "S S",
+	  "RSR"
+	],
+	"key": {
+		"A":{"item":"rainbowcompound:shadow_resonant_assembly"},
+		"R":{"item":"create:polished_rose_quartz"},
+		"C":{"item":"create:chromatic_compound"},
+		"S":{"item":"rainbowcompound:shadow_steel_sheet"}
+	},
+	"result": {"item":"rainbowcompound:shadow_ring",
+	      "count": 1},
+	"acceptMirrored": true
+}

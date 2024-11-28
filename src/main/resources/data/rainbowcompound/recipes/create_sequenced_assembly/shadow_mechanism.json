@@ -1,0 +1,94 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "rainbowcompound:shadow_steel_sheet"
+  },
+  "transitionalItem": {
+    "item": "rainbowcompound:incomplete_shadow_mechanism"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "create:precision_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "rainbowcompound:integrated_circuit"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "tag": "forge:nuggets/gold"
+        }
+      ],
+      "results": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rainbowcompound:shadow_mechanism",
+      "chance": 86.0
+    },
+    {
+      "item": "rainbowcompound:shadow_steel_sheet",
+      "chance": 8.0
+    },
+    {
+      "item": "rainbowcompound:integrated_circuit",
+      "chance": 3.0
+    },
+    {
+      "item": "create:precision_mechanism",
+      "chance": 3.0
+    }
+  ],
+  "loops": 1
+}

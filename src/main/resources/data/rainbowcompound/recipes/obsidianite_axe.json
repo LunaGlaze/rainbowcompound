@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "X$",
+    " $"
+  ],
+  "key": {
+    "X": {
+      "item": "rainbowcompound:obsidianite_ingot"
+    },
+    "$": {
+      "item": "rainbowcompound:obsidianite_stick"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_axe",
+    "count": 1
+  }
+}

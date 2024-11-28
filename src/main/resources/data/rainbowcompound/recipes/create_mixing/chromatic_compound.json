@@ -1,0 +1,26 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    },
+    {
+      "item": "rainbowcompound:strange_colored_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:chromatic_compound"
+    }
+  ],
+  "heatRequirement": "superheated"
+}

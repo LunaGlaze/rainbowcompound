@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "rainbowcompound:rainbow_apple"
+    },
+    {
+      "item": "rainbowcompound:netherstar_ingot"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:gold_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  ]
+}

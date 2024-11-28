@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:golden_apple"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_apple"
+  }
+}
