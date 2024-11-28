@@ -1,0 +1,50 @@
+[
+  {
+    "modules": ["double/basic_axe"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "axe_dig": 2
+    }
+  },
+  {
+    "modules": ["double/adze"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "shovel_dig": 2
+    }
+  },
+  {
+    "modules": ["double/basic_pickaxe"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "pickaxe_dig": 2
+    }
+  },
+  {
+    "modules": ["double/basic_hammer"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "hammer_dig": 2
+    }
+  },
+  {
+    "modules": ["double/claw"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "pry": 2
+    }
+  },
+  {
+    "modules": ["double/hoe"],
+    "moduleVariants": ["double_socket/socket_creat_netherstarite"],
+    "visibilityKey": "double_socket/socket_creat_netherstarite",
+    "tools": {
+      "hoe_dig": 2
+    }
+  }
+]
