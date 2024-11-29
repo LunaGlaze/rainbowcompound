@@ -17,13 +17,13 @@ public enum ToolTiers implements Tier {
     RAINBOW(5, 3072, 12.0F, 5.0F , 25, () -> {
         return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
     }),
-    Shadowsteel(3,2303,10.0F,3.5F,15,() -> {
+    Shadowsteel(3,2303,10.0F,4F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    Shadowsteeltool(3,2303,10.0F,3F,15,() -> {
+    Shadowsteeltool(3,2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    RefinedRadiance(3,2303,10.0F,3F,15,() -> {
+    RefinedRadiance(3,2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.REFINED_RADIANCE.get());
     });
     private final int level;
