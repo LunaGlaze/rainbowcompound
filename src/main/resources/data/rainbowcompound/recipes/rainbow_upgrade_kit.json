@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "OX",
-    "XA"
+    " A ",
+    "XOX",
+    " A "
   ],
   "key": {
     "X": {
       "item": "create:sturdy_sheet"
     },
     "A": {
-      "item": "rainbowcompound:rainbow_compound"
+      "item": "rainbowcompound:strange_colored_ingot"
     },
     "O": {
       "item": "rainbowcompound:obsidianite_upgrade_kit"

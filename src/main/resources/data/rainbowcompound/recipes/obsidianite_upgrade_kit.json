@@ -13,7 +13,7 @@
       "item": "create:sturdy_sheet"
     },
     "S": {
-      "item": "create:powdered_obsidian"
+      "tag": "minecraft:trim_templates"
     },
     "O": {
       "item": "minecraft:obsidian"

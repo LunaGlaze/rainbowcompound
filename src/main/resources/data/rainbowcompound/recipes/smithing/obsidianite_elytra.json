@@ -1,10 +1,13 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:obsidianite_upgrade_kit"
+  },
   "base": {
     "item": "minecraft:elytra"
   },
   "addition": {
-    "item": "rainbowcompound:obsidianite_ingot"
+    "item": "create:sturdy_sheet"
   },
   "result": {
     "item": "rainbowcompound:obsidianite_elytra"

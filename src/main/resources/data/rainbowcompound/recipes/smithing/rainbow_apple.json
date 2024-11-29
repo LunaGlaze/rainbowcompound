@@ -1,5 +1,8 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "create:chromatic_compound"
+  },
   "base": {
     "item": "minecraft:golden_apple"
   },

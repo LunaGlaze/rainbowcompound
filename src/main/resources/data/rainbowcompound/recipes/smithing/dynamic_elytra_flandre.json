@@ -1,5 +1,8 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:haunted_membrane"
+  },
   "base": {
     "item": "rainbowcompound:dynamic_elytra_rainbow"
   },
