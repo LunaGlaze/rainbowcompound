@@ -34,9 +34,9 @@ public class ObsidianiteElytraLayerAdd extends ObsidianiteElytraLayer<AbstractCl
         AtomicReference<Boolean> curioE = new AtomicReference<>(false);
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
             int slotsnum = slotInventory.getSlots();
-            for (int i=1 ; i<slotsnum ; i++){
+            for (int i=0 ; i<slotsnum && !curioE.get() ; i++){
                 Item eqCurio = slotInventory.getStacks().getStackInSlot(i).getItem();
-                if (eqCurio instanceof CuriosModElytraItem){
+                if (eqCurio instanceof CuriosModElytraItem && slotInventory.getRenders().get(i)){
                     curioE.set(true);
                 }
             }
@@ -47,18 +47,19 @@ public class ObsidianiteElytraLayerAdd extends ObsidianiteElytraLayer<AbstractCl
     @Override
     public ResourceLocation getElytraTexture(ItemStack stack, AbstractClientPlayer entity) {
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(entity).resolve().get();
-        AtomicReference<String> name = null;
+        final String[] name = new String[1];
+        name[0] = null;
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
             int slotsnum = slotInventory.getSlots();
-            for (int i=1 ; i<slotsnum ; i++){
+            for (int i=0 ; i<slotsnum ; i++){
                 Item eqCurio = slotInventory.getStacks().getStackInSlot(i).getItem();
                 if (eqCurio instanceof CuriosModElytraItem){
-                    name.set(eqCurio.toString());
+                    name[0] = eqCurio.toString();
                 }
             }
         });
-        if(name!=null){
-            return new ResourceLocation(LunaUtils.MOD_ID,"textures/entity/" + name + ".png");
+        if(name[0] !=null){
+            return new ResourceLocation(LunaUtils.MOD_ID,"textures/entity/" + name[0] + ".png");
         }else return null;
     }
 }

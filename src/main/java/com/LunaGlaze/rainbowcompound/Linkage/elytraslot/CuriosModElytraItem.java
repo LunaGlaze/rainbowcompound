@@ -6,13 +6,17 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CuriosModElytraItem extends ModElytraItem implements ICurio {
 
-    private ItemStack stack = getStack();
+    //public ItemStack stack = getStack();
     public CuriosModElytraItem(Item.Properties pProperties) {
         super(pProperties);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
@@ -26,10 +30,23 @@ public class CuriosModElytraItem extends ModElytraItem implements ICurio {
     @Override
     public void curioTick(SlotContext slotContext) {
         LivingEntity livingEntity = slotContext.entity();
+        final ItemStack[] stack = new ItemStack[1];
+        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(livingEntity).resolve().get();
+        AtomicBoolean hasrlytras = new AtomicBoolean(false);
+        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
+            int slotsnum = slotInventory.getSlots();
+            for (int i=0 ; i<slotsnum && !hasrlytras.get(); i++){
+                ItemStack stack1 = slotInventory.getStacks().getStackInSlot(i);
+                if( stack1.getItem() instanceof CuriosModElytraItem){
+                    hasrlytras.set(true);
+                    stack[0] = stack1;
+                }
+            }
+        });
         int ticks = livingEntity.getFallFlyingTicks();
 
-        if (ticks > 0 && livingEntity.isFallFlying()) {
-            stack.elytraFlightTick(livingEntity, ticks);
+        if (ticks > 0 && livingEntity.isFallFlying() && stack[0] != null) {
+            stack[0].elytraFlightTick(livingEntity, ticks);
         }
     }
 }

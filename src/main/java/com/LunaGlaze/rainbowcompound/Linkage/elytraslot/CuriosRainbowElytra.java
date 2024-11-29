@@ -30,6 +30,7 @@ import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Mod.EventBusSubscriber
@@ -78,16 +79,16 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     @OnlyIn(Dist.CLIENT)
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+    public static void onPlayerTickClient(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
         Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(player).resolve().get();
-        AtomicReference<Boolean> curioE = new AtomicReference<>(false);
+        AtomicBoolean curioE = new AtomicBoolean(false);
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
             int slotsnum = slotInventory.getSlots();
-            for (int i=1 ; i<slotsnum ; i++){
-                Item eqCurio = slotInventory.getStacks().getStackInSlot(i).getItem();
-                if (eqCurio instanceof CuriosRainbowElytra){
+            for (int i=0 ; i<slotsnum && !curioE.get(); i++){
+                ItemStack eqCurio = slotInventory.getStacks().getStackInSlot(i);
+                if (eqCurio.getItem() instanceof CuriosRainbowElytra){
                     curioE.set(true);
                 }
             }

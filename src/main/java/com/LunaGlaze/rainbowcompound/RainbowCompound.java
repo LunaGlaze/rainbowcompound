@@ -10,7 +10,6 @@ import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.farmersdelightItemRe
 import com.LunaGlaze.rainbowcompound.Projects.Effect.EffectRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ElytraItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Foods.FoodsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Props.PropsItemRegistry;

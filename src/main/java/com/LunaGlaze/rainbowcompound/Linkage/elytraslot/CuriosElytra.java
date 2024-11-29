@@ -75,7 +75,7 @@ public class CuriosElytra {
         AtomicBoolean hasrlytras = new AtomicBoolean(false);
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
             int slotsnum = slotInventory.getSlots();
-            for (int i=1 ; i<slotsnum ; i++){
+            for (int i=0 ; i<slotsnum ; i++){
                 ItemStack stack = slotInventory.getStacks().getStackInSlot(i);
                 if(stack.canElytraFly(entity) || stack.getItem() instanceof CuriosModElytraItem){
                     hasrlytras.set(true);
