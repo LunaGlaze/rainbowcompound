@@ -39,7 +39,7 @@ public class CuriosModElytraItem extends ModElytraItem implements ICurio {
     public static final AttributeModifier MOD_ELYTRA_MODIFIER =
             new AttributeModifier(UUID.fromString("92b506f3-0a87-4989-a203-2ed4c7b4c1fd"),
                     "CRC Elytra modifier", 1.0D, AttributeModifier.Operation.ADDITION);
-    private final ItemStack stack = this.getStack();
+    // private final ItemStack stack = this.getStack();
     public CuriosModElytraItem(Item.Properties pProperties) {
         super(pProperties);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
@@ -66,10 +66,23 @@ public class CuriosModElytraItem extends ModElytraItem implements ICurio {
     @Override
     public void curioTick(SlotContext slotContext) {
         LivingEntity livingEntity = slotContext.entity();
+        final ItemStack[] stack = new ItemStack[1];
+        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosHelper().getCuriosHandler(livingEntity).resolve().get();
+        AtomicBoolean hasrlytras = new AtomicBoolean(false);
+        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
+            int slotsnum = slotInventory.getSlots();
+            for (int i=0 ; i<slotsnum && !hasrlytras.get(); i++){
+                ItemStack stack1 = slotInventory.getStacks().getStackInSlot(i);
+                if( stack1.getItem() instanceof CuriosModElytraItem){
+                    hasrlytras.set(true);
+                    stack[0] = stack1;
+                }
+            }
+        });
         int ticks = livingEntity.getFallFlyingTicks();
 
-        if (ticks > 0 && livingEntity.isFallFlying()) {
-            this.stack.elytraFlightTick(livingEntity, ticks);
+        if (ticks > 0 && livingEntity.isFallFlying() && stack[0] != null) {
+            stack[0].elytraFlightTick(livingEntity, ticks);
         }
     }
 }

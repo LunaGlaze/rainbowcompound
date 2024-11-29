@@ -29,9 +29,11 @@ import org.apache.commons.lang3.tuple.ImmutableTriple;
 import top.theillusivec4.caelus.api.CaelusApi;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Mod.EventBusSubscriber
 public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
@@ -81,35 +83,19 @@ public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
     @OnlyIn(Dist.CLIENT)
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
-        AttributeInstance attributeInstance =
-                player.getAttribute(CaelusApi.getInstance().getFlightAttribute());
-        if (attributeInstance != null) {
-            attributeInstance.removeModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER);
-
-            if (!attributeInstance.hasModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER)) {
-                CuriosApi.getCuriosHelper()
-                        .findEquippedCurio((stack) -> stack.canElytraFly(player), player)
-                        .ifPresent(triple -> attributeInstance
-                                .addTransientModifier(CuriosModElytraItem.MOD_ELYTRA_MODIFIER));
-            }
-        }
         Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio1 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_radiance.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio2 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_feather.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio3 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_fire.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio4 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_ice.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio5 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_66ccff.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio6 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_ender.get(), player);
-        Optional<ImmutableTriple<String, Integer, ItemStack>> eqCurio7 =
-                CuriosApi.getCuriosHelper().findEquippedCurio(CuriosElytraItemRegistry.dynamicelytra_slime.get(), player);
-        if(item instanceof CuriosDynamicElytra || eqCurio1.isPresent() || eqCurio2.isPresent() || eqCurio3.isPresent() || eqCurio4.isPresent()
-                || eqCurio5.isPresent() || eqCurio6.isPresent() || eqCurio7.isPresent()) {
+        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve().get();
+        AtomicReference<Boolean> curioE = new AtomicReference<>(false);
+        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
+            int slotsnum = slotInventory.getSlots();
+            for (int i=0 ; i<slotsnum ; i++){
+                Item eqCurio = slotInventory.getStacks().getStackInSlot(i).getItem();
+                if (eqCurio instanceof CuriosDynamicElytra){
+                    curioE.set(true);
+                }
+            }
+        });
+        if(item instanceof CuriosDynamicElytra || curioE.get()) {
             if (player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
                 Vec3 lookAngle = player.getLookAngle();
                 Vec3 flyAngle = player.getDeltaMovement();
