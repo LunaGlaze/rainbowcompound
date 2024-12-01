@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "rainbowcompound:haunted_membrane"
+    "item": "rainbowcompound:rainbow_upgrade_kit"
   },
   "base": {
     "tag": "rainbowcompound:dynamic_elytra"

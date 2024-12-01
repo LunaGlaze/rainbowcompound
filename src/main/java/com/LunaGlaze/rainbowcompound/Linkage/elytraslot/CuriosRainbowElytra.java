@@ -81,6 +81,7 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
     @OnlyIn(Dist.CLIENT)
     public static void onPlayerTickClient(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
+        if(player == null || !CuriosApi.getCuriosInventory(player).isPresent()){ return; }
         Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(player).resolve().get();
         AtomicBoolean curioE = new AtomicBoolean(false);

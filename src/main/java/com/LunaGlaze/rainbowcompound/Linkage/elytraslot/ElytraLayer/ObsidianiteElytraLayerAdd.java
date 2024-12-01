@@ -30,6 +30,7 @@ public class ObsidianiteElytraLayerAdd extends ObsidianiteElytraLayer<AbstractCl
 
     @Override
     public boolean shouldRender(ItemStack stack, AbstractClientPlayer entity) {
+        if(entity == null || !CuriosApi.getCuriosInventory(entity).isPresent()){return false;}
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(entity).resolve().get();
         AtomicReference<Boolean> curioE = new AtomicReference<>(false);
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {

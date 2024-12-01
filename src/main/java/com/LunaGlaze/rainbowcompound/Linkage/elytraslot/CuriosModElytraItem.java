@@ -31,6 +31,7 @@ public class CuriosModElytraItem extends ModElytraItem implements ICurio {
     public void curioTick(SlotContext slotContext) {
         LivingEntity livingEntity = slotContext.entity();
         final ItemStack[] stack = new ItemStack[1];
+        if(livingEntity == null || !CuriosApi.getCuriosInventory(livingEntity).isPresent()){ return; }
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(livingEntity).resolve().get();
         AtomicBoolean hasrlytras = new AtomicBoolean(false);
         curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {

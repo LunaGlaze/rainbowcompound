@@ -71,18 +71,22 @@ public class CuriosElytra {
         }
     }
     public static boolean hasElytra(LivingEntity entity) {
-        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(entity).resolve().get();
-        AtomicBoolean hasrlytras = new AtomicBoolean(false);
-        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
-            int slotsnum = slotInventory.getSlots();
-            for (int i=0 ; i<slotsnum ; i++){
-                ItemStack stack = slotInventory.getStacks().getStackInSlot(i);
-                if(stack.canElytraFly(entity) || stack.getItem() instanceof CuriosModElytraItem){
-                    hasrlytras.set(true);
+        if(entity == null || !CuriosApi.getCuriosInventory(entity).isPresent()){
+            return false;
+        }else {
+            ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(entity).resolve().get();
+            AtomicBoolean hasrlytras = new AtomicBoolean(false);
+            curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
+                int slotsnum = slotInventory.getSlots();
+                for (int i=0 ; i<slotsnum ; i++){
+                    ItemStack stack = slotInventory.getStacks().getStackInSlot(i);
+                    if(stack.canElytraFly(entity) || stack.getItem() instanceof CuriosModElytraItem){
+                        hasrlytras.set(true);
+                    }
                 }
-            }
-        });
-        return hasrlytras.get();
+            });
+            return hasrlytras.get();
+        }
     }
 
     private static void attachCapabilities(final AttachCapabilitiesEvent<ItemStack> evt) {
