@@ -81,6 +81,7 @@ public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
     @OnlyIn(Dist.CLIENT)
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
+        if(player == null || !CuriosApi.getCuriosHelper().getCuriosHandler(player).isPresent()){ return; }
         Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
         ICuriosItemHandler curiosInventory = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve().get();
         AtomicReference<Boolean> curioE = new AtomicReference<>(false);
