@@ -6,6 +6,6 @@ import vectorwing.farmersdelight.common.item.KnifeItem;
 
 public class ObsidianiteKnife extends KnifeItem {
     public ObsidianiteKnife() {
-        super(ToolTiers.Obsidianite,0.5f,-2.2f,new Properties().tab(CreativeModeTabGroup.group));
+        super(ToolTiers.Obsidianite,0.5f,-2.2f,new Properties().fireResistant().tab(CreativeModeTabGroup.group));
     }
 }

@@ -123,16 +123,6 @@ repositories {
     //     dir 'libs'
     // }
     maven {
-        name = 'tterrag maven'
-        url = 'https://maven.tterrag.com/'
-    }
-    maven {
-        // Location of the maven that hosts JEI files (and TiC)
-        name 'Progwml6 maven'
-        url 'https://dvs1.progwml6.com/files/maven'
-    }
-    maven {
-        // Location of the maven for vazkii's mods
         name 'blamejared'
         url 'https://maven.blamejared.com'
     }
@@ -141,10 +131,24 @@ repositories {
         url = "https://maven.theillusivec4.top/"
     }
     maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
         url = "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
+    }
+    maven {
+        name = 'tterrag maven'
+        url = 'https://maven.tterrag.com/'
+    }
+    maven {
+        // Location of the maven that hosts JEI files (and TiC)
+        name 'Progwml6 maven'
+        url 'https://dvs1.progwml6.com/files/maven'
     }
 }
 

@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "X",
-    "D",
-    "D"
+    "$",
+    "$"
   ],
   "key": {
     "X": {
       "item": "create:shadow_steel"
     },
-    "D": {
-      "tag": "forge:ingots/zinc"
+    "$": {
+      "tag": "create:zinc_handle"
     }
   },
   "result": {

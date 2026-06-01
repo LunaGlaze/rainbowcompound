@@ -3,14 +3,14 @@
   "pattern": [
     "X",
     "X",
-    "D"
+    "$"
   ],
   "key": {
     "X": {
       "item": "create:shadow_steel"
     },
-    "D": {
-      "tag": "forge:ingots/zinc"
+    "$": {
+      "tag": "create:zinc_handle"
     }
   },
   "result": {

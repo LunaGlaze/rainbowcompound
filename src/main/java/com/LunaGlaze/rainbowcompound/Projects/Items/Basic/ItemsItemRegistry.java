@@ -21,6 +21,7 @@ public class ItemsItemRegistry {
     public static final RegistryObject<Item> warpediteingot = ITEMS.register("warpedite_ingot",LowGradeMaterial::new);
     public static final RegistryObject<Item> obsidianiteingot = ITEMS.register("obsidianite_ingot",NRFireResistantMaterial::new);
     public static final RegistryObject<Item> obsidianitestick = ITEMS.register("obsidianite_stick",NRFireResistantMaterial::new);
+    public static final RegistryObject<Item> zincrod = ITEMS.register("zinc_rod",LowGradeMaterial::new);
     public static final RegistryObject<Item> hauntedmembrane = ITEMS.register("haunted_membrane",LowGradeMaterial::new);
     public static final RegistryObject<Item> lapissheet = ITEMS.register("lapis_sheet",LowGradeMaterial::new);
     public static final RegistryObject<Item> integratedcircuit = ITEMS.register("integrated_circuit",LowGradeMaterial::new);

@@ -8,5 +8,9 @@
   },
   "result": {
     "item": "rainbowcompound:rainbow_knife"
-  }
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "farmersdelight"
+  } ]
 }

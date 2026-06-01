@@ -97,8 +97,8 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
             if (player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
                 Vec3 lookAngle = player.getLookAngle();
                 Vec3 flyAngle = player.getDeltaMovement();
-                double d = 0.1;
-                double i = 1.5;
+                double d = 0.15;
+                double i = 1.6;
                 double t = 0.5;
                 double c = LunaConfig.ELYTRA_SPEED.get();
                 player.setDeltaMovement(flyAngle.add(
@@ -114,9 +114,6 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
         if(!entity.level.isClientSide) {
             int nextFlightTick = flightTicks + 1;
             if (nextFlightTick % 10 == 0) {
-                if ((flightTicks) % 25 == 0 && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
-                    stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(EquipmentSlot.CHEST));
-                }
                 entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_GLIDE);
             }
         }

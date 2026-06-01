@@ -6,14 +6,18 @@
   ],
   "key": {
     "X": {
-      "item": "create:refined_radiance"
+      "item": "create:shadow_steel"
     },
     "$": {
-      "item": "create:zinc_ingot"
+      "tag": "create:zinc_handle"
     }
   },
   "result": {
-    "item": "rainbowcompound:refined_radiance_knife",
+    "item": "rainbowcompound:shadow_steel_knife",
     "count": 1
-  }
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "farmersdelight"
+  } ]
 }

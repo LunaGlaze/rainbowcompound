@@ -1,10 +1,10 @@
 {
   "type":"createaddition:rolling",
   "input": {
-    "tag": "forge:ingots/zinc"
+    "item": "create_sa:zinc_handle"
   },
   "result": {
-    "item": "create_sa:zinc_handle",
+    "item": "rainbowcompound:zinc_rod",
     "count": 1
   },
   "conditions": [ {
