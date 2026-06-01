@@ -3,7 +3,7 @@ package com.LunaGlaze.rainbowcompound.Core.Registries;
 import com.LunaGlaze.rainbowcompound.Core.ArmorMaterials.CRCArmorMaterials;
 import com.LunaGlaze.rainbowcompound.Core.Tab.RainbowcompoundTab;
 import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
-import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.FarmersDelightItemsRegistry;
+import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.FarmersDelightItemRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.kaleidoscopecookery.KCItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksBlockRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksItemRegistry;
@@ -44,7 +44,7 @@ public class RegistryManager {
 
         // Farmer's Delight Linkage
         if (RainbowCompound.isFarmersDelightLoaded) {
-            FarmersDelightItemsRegistry.ITEMS.register(modEventBus);
+            FarmersDelightItemRegistry.ITEMS.register(modEventBus);
         }
 
         // Kaleidoscope Cookery Linkage
