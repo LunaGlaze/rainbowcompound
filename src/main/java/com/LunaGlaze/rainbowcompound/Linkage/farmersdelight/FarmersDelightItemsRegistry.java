@@ -6,7 +6,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class FarmersDelightItemRegistry {
+public class FarmersDelightItemsRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, LunaUtils.MOD_ID);
 
     public static final DeferredHolder<Item, Item> obsidianiteknife = ITEMS.register("obsidianite_knife",ObsidianiteKnife::new);

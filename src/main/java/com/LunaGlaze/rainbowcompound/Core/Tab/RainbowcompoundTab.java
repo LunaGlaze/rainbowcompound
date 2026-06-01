@@ -1,7 +1,7 @@
 package com.LunaGlaze.rainbowcompound.Core.Tab;
 
 import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
-import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.FarmersDelightItemRegistry;
+import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.FarmersDelightItemsRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.kaleidoscopecookery.KCItemRegistry;
 import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksItemRegistry;
@@ -55,7 +55,7 @@ public class RainbowcompoundTab {
                 }
                 // Farmers' Delight Linkage
                 if (RainbowCompound.isFarmersDelightLoaded) {
-                    FarmersDelightItemRegistry.ITEMS.getEntries().stream().map(Supplier::get).forEach(output::accept);
+                    FarmersDelightItemsRegistry.ITEMS.getEntries().stream().map(Supplier::get).forEach(output::accept);
                 }
                 // Kaleidoscope Cookery Linkage
                 if (RainbowCompound.isKaleidoscopeCookeryLoaded) {
