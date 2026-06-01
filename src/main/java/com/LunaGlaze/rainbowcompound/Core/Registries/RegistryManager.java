@@ -2,7 +2,6 @@ package com.LunaGlaze.rainbowcompound.Core.Registries;
 
 import com.LunaGlaze.rainbowcompound.Core.ArmorMaterials.CRCArmorMaterials;
 import com.LunaGlaze.rainbowcompound.Core.Tab.RainbowcompoundTab;
-import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCABlockRegistryTterrag;
 import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.FarmersDelightItemRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.kaleidoscopecookery.KCItemRegistry;
