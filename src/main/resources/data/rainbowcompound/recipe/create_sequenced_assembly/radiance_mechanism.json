@@ -1,0 +1,94 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "rainbowcompound:refined_radiance_sheet"
+  },
+  "transitional_item": {
+    "id": "rainbowcompound:incomplete_radiance_mechanism"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_mechanism"
+        },
+        {
+          "item": "create:precision_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_mechanism"
+        },
+        {
+          "item": "rainbowcompound:integrated_circuit"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_mechanism"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_mechanism"
+        },
+        {
+          "tag": "c:nuggets/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_mechanism"
+        }
+      ]
+    }
+  ],
+  "loops": 1,
+  "results": [
+    {
+      "id": "rainbowcompound:radiance_mechanism",
+      "chance": 86.0
+    },
+    {
+      "id": "rainbowcompound:refined_radiance_sheet",
+      "chance": 8.0
+    },
+    {
+      "id": "rainbowcompound:integrated_circuit",
+      "chance": 3.0
+    },
+    {
+      "id": "create:precision_mechanism",
+      "chance": 3.0
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type":"createaddition:rolling",
+  "input": {
+    "item": "create_sa:zinc_handle"
+  },
+  "result": {
+    "item": "rainbowcompound:zinc_rod",
+    "count": 1
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "create_sa"
+  } ]
+}

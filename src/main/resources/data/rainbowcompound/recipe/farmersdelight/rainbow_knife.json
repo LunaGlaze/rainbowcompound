@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "base": {
+    "item": "rainbowcompound:obsidianite_knife"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "id": "rainbowcompound:rainbow_knife"
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "farmersdelight"
+  } ]
+}

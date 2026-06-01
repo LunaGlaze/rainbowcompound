@@ -1,0 +1,29 @@
+{
+  	"type": "create:mechanical_crafting",
+	"accept_mirrored": true,
+	"pattern": [
+		" B ",
+		"GRG",
+		"GTG",
+		"GRG",
+		" B "
+	],
+	"key": {
+	  	"B":{
+		  	"item":"create:brass_sheet"
+	  	},
+	  	"G":{
+		  	"tag":"c:glass_blocks"
+	  	},
+	  	"T":{
+		  	"item":"create:electron_tube"
+	  	},
+	  	"R":{
+		  	"item":"create:refined_radiance"
+	  	}
+	},
+	"result": {
+		"id":"rainbowcompound:refined_radiance_neon",
+		"count": 4
+	}
+}

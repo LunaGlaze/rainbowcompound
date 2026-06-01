@@ -1,0 +1,40 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:nuggets/iron"
+    },
+    {
+      "tag": "c:nuggets/iron"
+    },
+    {
+      "tag": "c:nuggets/iron"
+    },
+    {
+      "tag": "c:nuggets/iron"
+    },
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "type": "neoforge:single",
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "heatRequirement": "heated",
+  "results": [
+    {
+      "id": "rainbowcompound:frostite_ingot"
+    }
+  ]
+}

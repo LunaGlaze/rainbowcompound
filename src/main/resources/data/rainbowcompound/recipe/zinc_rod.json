@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "tag": "c:ingots/zinc"
+    }
+  },
+  "result": {
+    "id": "rainbowcompound:zinc_rod",
+    "count": 2
+  }
+}

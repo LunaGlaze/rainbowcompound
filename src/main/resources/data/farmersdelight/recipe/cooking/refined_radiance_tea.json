@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "drinks",
+  "ingredients": [
+    {
+      "item": "create:refined_radiance"
+    },
+    {
+      "item": "minecraft:short_grass"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "container": {
+    "id": "create:builders_tea"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "result": {
+    "id": "rainbowcompound:refined_radiance_tea"
+  }
+}

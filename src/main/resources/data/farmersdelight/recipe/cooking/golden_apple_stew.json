@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "meals",
+  "ingredients": [
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "minecraft:small_flowers"
+    }
+  ],
+  "container": {
+    "id": "minecraft:suspicious_stew"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "result": {
+    "id": "rainbowcompound:golden_apple_stew"
+  }
+}

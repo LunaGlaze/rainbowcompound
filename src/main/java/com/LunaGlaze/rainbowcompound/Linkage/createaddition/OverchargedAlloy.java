@@ -1,12 +1,17 @@
 package com.LunaGlaze.rainbowcompound.Linkage.createaddition;
 
-import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SimpleFoiledItem;
+import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.NotNull;
 
-public class OverchargedAlloy extends SimpleFoiledItem {
+public class OverchargedAlloy extends Item {
     public OverchargedAlloy() {
-        super(new Properties().tab(CreativeModeTabGroup.group).rarity(Rarity.UNCOMMON));
+        super(new Properties().rarity(Rarity.UNCOMMON));
     }
 
+    @Override
+    public boolean isFoil(@NotNull ItemStack stack) {
+        return true;
+    }
 }

@@ -2,69 +2,49 @@ package com.LunaGlaze.rainbowcompound.Linkage.elytraslot;
 
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
-import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
+import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
-import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-import top.theillusivec4.curios.api.CuriosApi;
+import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
-@Mod.EventBusSubscriber
-public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
-
-    private static final UUID uuid = UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D");
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+//@EventBusSubscriber
+public class CuriosDynamicElytra extends CuriosModElytraItem {
+    private static final int defense = 5;
+    private static final float toughness = 2;
 
     public CuriosDynamicElytra() {
-        super(new Properties().tab(CreativeModeTabGroup.group).fireResistant().durability(1152).rarity(Rarity.UNCOMMON));
-        DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        int defense = this.getDefense();
-        float toughness = this.getToughness();
-        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor modifier", toughness, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = builder.build();
+        super(new Properties().fireResistant().durability(1152).rarity(Rarity.UNCOMMON)
+                .attributes(ItemAttributeModifiers.builder()
+                        .add(Attributes.ARMOR, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), defense, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+                        .add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), toughness, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+                        .build())
+        );
     }
 
     @Override
-    public boolean isFoil(ItemStack stack) {
+    public boolean isFoil(@NotNull ItemStack stack) {
         return true;
     }
 
     @Override
-    public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
+    public boolean isValidRepairItem(@NotNull ItemStack pToRepair, ItemStack pRepair) {
         return pRepair.is(ItemsItemRegistry.refinedradiancesheet.get());
-    }
-    private int getDefense(){
-        return 5;
-    }
-
-    private float getToughness(){
-        return 2;
     }
 
     @Override
@@ -73,29 +53,22 @@ public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
-        return pEquipmentSlot == EquipmentSlot.CHEST ? this.defaultModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
+        if (slotContext.identifier().equals("back")) {
+            Multimap<Holder<Attribute>, AttributeModifier> modifiers = super.getAttributeModifiers(slotContext, id, stack);
+            modifiers.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), defense, AttributeModifier.Operation.ADD_VALUE));
+            modifiers.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), toughness, AttributeModifier.Operation.ADD_VALUE));
+            return modifiers;
+        }
+        return ((ICurio) () -> ItemStack.EMPTY).getAttributeModifiers(slotContext, id);
     }
 
-    @SubscribeEvent(priority = EventPriority.LOW)
-    @OnlyIn(Dist.CLIENT)
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
-        if(player == null || !CuriosApi.getCuriosHelper().getCuriosHandler(player).isPresent()){ return; }
-        Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
-        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve().get();
-        AtomicReference<Boolean> curioE = new AtomicReference<>(false);
-        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
-            int slotsnum = slotInventory.getSlots();
-            for (int i=0 ; i<slotsnum ; i++){
-                Item eqCurio = slotInventory.getStacks().getStackInSlot(i).getItem();
-                if (eqCurio instanceof CuriosDynamicElytra){
-                    curioE.set(true);
-                }
-            }
-        });
-        if(item instanceof CuriosDynamicElytra || curioE.get()) {
-            if (player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity livingEntity = slotContext.entity();
+        if(livingEntity.level().isClientSide){
+            if (livingEntity instanceof Player player && player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed())
+            {
                 Vec3 lookAngle = player.getLookAngle();
                 Vec3 flyAngle = player.getDeltaMovement();
                 double d = 0.1;
@@ -111,14 +84,26 @@ public class CuriosDynamicElytra extends CuriosModElytraItem implements ICurio {
     }
 
     @Override
-    public boolean elytraFlightTick(ItemStack stack, net.minecraft.world.entity.LivingEntity entity, int flightTicks) {
-        if(!entity.level.isClientSide) {
+    public boolean elytraFlightTick(@NotNull ItemStack stack, net.minecraft.world.entity.LivingEntity entity, int flightTicks) {
+        if(entity.level().isClientSide){
+            if (entity instanceof Player player && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed())
+            {
+                Vec3 lookAngle = player.getLookAngle();
+                Vec3 flyAngle = player.getDeltaMovement();
+                double d = 0.1;
+                double i = 1.5;
+                double t = 0.4;
+                double c = LunaConfig.ELYTRA_SPEED.get();
+                player.setDeltaMovement(flyAngle.add(
+                        (lookAngle.x * d + (lookAngle.x * i - flyAngle.x) * t) * c,
+                        (lookAngle.y * d + (lookAngle.y * i - flyAngle.y) * t) * c,
+                        (lookAngle.z * d + (lookAngle.z * i - flyAngle.z) * t) * c));
+            }
+        }
+        if(!entity.level().isClientSide) {
             int nextFlightTick = flightTicks + 1;
             if (nextFlightTick % 10 == 0) {
-                if ((flightTicks) % 20 == 0 && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
-                    stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(net.minecraft.world.entity.EquipmentSlot.CHEST));
-                }
-                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_FREE_FALL);
+                entity.gameEvent(GameEvent.ELYTRA_GLIDE);
             }
         }
         return true;

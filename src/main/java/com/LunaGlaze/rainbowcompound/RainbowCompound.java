@@ -1,82 +1,75 @@
 package com.LunaGlaze.rainbowcompound;
 
-import com.LunaGlaze.rainbowcompound.Core.Curios.Curios;
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
-import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
-import com.LunaGlaze.rainbowcompound.Linkage.elytraslot.CuriosElytra;
-import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.farmersdelightItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlockRegistryTterrag;
-import com.LunaGlaze.rainbowcompound.Projects.Effect.EffectRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Foods.FoodsItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Props.PropsItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Items.SequencedAssembly.IncompleteItems;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Tools.ToolsItemRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksBlockRegistry;
-import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksItemRegistry;
+import com.LunaGlaze.rainbowcompound.Core.Registries.RegistryManager;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.world.item.*;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 @Mod(LunaUtils.MOD_ID)
 public class RainbowCompound {
-
     public static boolean isFarmersDelightLoaded = false;
     public static boolean isCreateCraftAddLoaded = false;
+    public static boolean isCuriousElytraLoaded = false;
+    public static boolean isKaleidoscopeCookeryLoaded = false;
 
-    public RainbowCompound(){
-        IEventBus registereventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(LunaUtils.MOD_ID);
+
+    public RainbowCompound(IEventBus modEventBus, ModContainer modContainer){
         isFarmersDelightLoaded = ModList.get().isLoaded("farmersdelight");
         isCreateCraftAddLoaded = ModList.get().isLoaded("createaddition");
+        isCuriousElytraLoaded = ModList.get().isLoaded("caelus");
+        isKaleidoscopeCookeryLoaded = ModList.get().isLoaded("kaleidoscope_cookery");
 
-        onCreate();
-        CuriosElytra.init(registereventBus, forgeEventBus);
+        //onCreate(modEventBus);
+        RegistryManager.register(modEventBus);
 
-        FoodsItemRegistry.ITEMS.register(registereventBus);
-        ItemsItemRegistry.ITEMS.register(registereventBus);
-        ToolsItemRegistry.ITEMS.register(registereventBus);
-        ArmorsItemRegistry.ITEMS.register(registereventBus);
-        CuriosElytraItemRegistry.ITEMS.register(registereventBus);
-        PropsItemRegistry.ITEMS.register(registereventBus);
-        BlocksBlockRegistry.BLOCKS.register(registereventBus);
-        BlocksItemRegistry.ITEMS.register(registereventBus);
-        EffectRegistry.EFFECTS.register(registereventBus);
-
-        if(isFarmersDelightLoaded){
-            farmersdelightItemRegistry.ITEMS.register(registereventBus);
-        }
-        if(isCreateCraftAddLoaded){
-            CCAItemRegistry.ITEMS.register(registereventBus);
-        }
-
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LunaConfig.COMMON_CONFIG);
-
-        registereventBus.addListener(RainbowCompound::clientInit);
-
-        Curios.init(registereventBus, forgeEventBus);
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, LunaConfig.COMMON_CONFIG);
     }
-    public static void clientInit(final FMLClientSetupEvent event) {
-        ElytraFlyKey.register();
-    }
-    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(LunaUtils.MOD_ID);
-    public static void onCreate() {
 
-        IEventBus modEventBus = FMLJavaModLoadingContext.get()
-                .getModEventBus();
+    public static void onCreate(IEventBus modEventBus) {
 
         REGISTRATE.registerEventListeners(modEventBus);
+        modEventBus.addListener(RainbowCompound::addCreative);
+        //IncompleteItems.register();
+    }
 
-        BlockRegistryTterrag.register();
-        IncompleteItems.register();
+    private static void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey()) {
+            event.accept(new ItemStack(AllItems.CHROMATIC_COMPOUND.get()));
+            event.accept(new ItemStack(AllItems.SHADOW_STEEL.get()));
+            event.accept(new ItemStack(AllItems.REFINED_RADIANCE.get()));
+            event.accept(new ItemStack(AllBlocks.SHADOW_STEEL_CASING.get()));
+            event.accept(new ItemStack(AllBlocks.REFINED_RADIANCE_CASING.get()));
+        }
+    }
+
+    @EventBusSubscriber(modid = LunaUtils.MOD_ID, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+            for (ElytraFlyKey key : ElytraFlyKey.values()) {
+                key.keybind = new KeyMapping(key.description, key.key, LunaUtils.NAME);
+                if (!key.modifiable)
+                    continue;
+                event.register(key.keybind);
+            }
+        }
     }
 }
+

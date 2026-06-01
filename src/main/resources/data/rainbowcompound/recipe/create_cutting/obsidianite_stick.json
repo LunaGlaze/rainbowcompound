@@ -1,0 +1,14 @@
+{
+    "type": "create:cutting",
+    "ingredients": [
+        {
+            "item": "rainbowcompound:obsidianite_ingot"
+        }
+    ],
+    "processingTime": 200,
+    "results": [
+        {
+            "id": "rainbowcompound:obsidianite_stick"
+        }
+    ]
+}

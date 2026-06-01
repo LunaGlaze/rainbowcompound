@@ -1,40 +1,43 @@
 package com.LunaGlaze.rainbowcompound.Core.Tiers;
 
-import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
 import com.simibubi.create.AllItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
 public enum ToolTiers implements Tier {
-    Obsidianite(3, 2048, 9.0F, 3.75F, 15, () -> {
+    Obsidianite(TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("incorrect_for_diamond_tool")), 2048, 9.0F, 3.75F, 15, () -> {
         return Ingredient.of(Items.OBSIDIAN);
     }),
-    RAINBOW(5, 3072, 12.0F, 5.0F , 25, () -> {
+    RAINBOW(TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("incorrect_for_netherite_tool")), 3072, 12.0F, 5.0F , 25, () -> {
         return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
     }),
-    Shadowsteel(4,2303,10.0F,4F,15,() -> {
+    Shadowsteel(TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("incorrect_for_diamond_tool")),2303,10.0F,4F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    Shadowsteeltool(4,2303,10.0F,3.5F,15,() -> {
+    Shadowsteeltool(TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("incorrect_for_diamond_tool")),2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.SHADOW_STEEL.get());
     }),
-    RefinedRadiance(4,2303,10.0F,3.5F,15,() -> {
+    RefinedRadiance(TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("incorrect_for_diamond_tool")),2303,10.0F,3.5F,15,() -> {
         return Ingredient.of(AllItems.REFINED_RADIANCE.get());
     });
-    private final int level;
+    private final TagKey<Block> incorrects;
     private final int uses;
     private final float speed;
     private final float damage;
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    ToolTiers(int pLevel, int pUses, float pSpeed, float pDamage, int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient) {
-        this.level = pLevel;
+    ToolTiers(TagKey<Block> incorrects,int pUses, float pSpeed, float pDamage, int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient) {
+        this.incorrects = incorrects;
         this.uses = pUses;
         this.speed = pSpeed;
         this.damage = pDamage;
@@ -58,8 +61,8 @@ public enum ToolTiers implements Tier {
     }
 
     @Override
-    public int getLevel() {
-        return this.level;
+    public TagKey<Block> getIncorrectBlocksForDrops() {
+        return this.incorrects;
     }
 
     @Override

@@ -1,85 +1,83 @@
 package com.LunaGlaze.rainbowcompound.Core.ArmorMaterials;
 
-import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
+import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
-import com.google.common.base.Suppliers;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.ApiStatus;
 
+import java.util.EnumMap;
+import java.util.List;
 import java.util.function.Supplier;
 
-public enum CRCArmorMaterials implements ArmorMaterial {
-    Obsidianite("obsidianite", 38, new int[]{3, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.15F, () -> {
-        return Ingredient.of(Items.OBSIDIAN);
-    }),
-    RAINBOW("rainbow", 48, new int[]{4 , 7 , 9 , 4 },
-            25, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F , 0.1F, () -> {
-        return Ingredient.of(ItemsItemRegistry.rainbowcompound.get());
-    });
+public class CRCArmorMaterials {
+    private static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, LunaUtils.MOD_ID);
 
-    private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
-    private final String name;
-    private final int maxDamageFactor;
-    private final int[] damageReductionAmountArray;
-    private final int enchantability;
-    private final SoundEvent soundEvent;
-    private final float toughness;
-    private final float knockbackResistance;
-    private final Supplier<Ingredient> repairMaterial;
+    public static final Holder<ArmorMaterial> Obsidianite = register(
+            "obsidianite",
+            new int[] { 3, 8, 6, 3, 11 },
+            15,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            2.0F,
+            0.15F,
+            () -> Ingredient.of(Items.OBSIDIAN)
+    );
 
-    private CRCArmorMaterials(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability,
-                              SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
-        this.name = name;
-        this.maxDamageFactor = maxDamageFactor;
-        this.damageReductionAmountArray = damageReductionAmountArray;
-        this.enchantability = enchantability;
-        this.soundEvent = soundEvent;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
-        this.repairMaterial = Suppliers.memoize(repairMaterial::get);
+    public static final Holder<ArmorMaterial> Rainbow = register(
+            "rainbow",
+            new int[] { 4, 9, 7, 4, 13 },
+            25,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            4.0F,
+            1.0F,
+            () -> Ingredient.of(ItemsItemRegistry.rainbowcompound.get())
+    );
+
+    private static Holder<ArmorMaterial> register(
+            String name,
+            int[] defense,
+            int enchantmentValue,
+            Holder<SoundEvent> equipSound,
+            float toughness,
+            float knockbackResistance,
+            Supplier<Ingredient> repairIngredient
+    ) {
+        List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, name)));
+        return register(name, defense, enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, list);
     }
 
-    @Override
-    public int getDurabilityForSlot(EquipmentSlot slot) {
-        return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.maxDamageFactor;
+    private static Holder<ArmorMaterial> register(
+            String name,
+            int[] defense,
+            int enchantmentValue,
+            Holder<SoundEvent> equipSound,
+            float toughness,
+            float knockbackResistance,
+            Supplier<Ingredient> repairIngridient,
+            List<ArmorMaterial.Layer> layers
+    ) {
+        EnumMap<ArmorItem.Type, Integer> enummap = new EnumMap<>(ArmorItem.Type.class);
+
+        for (ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
+            enummap.put(armoritem$type, defense[armoritem$type.ordinal()]);
+        }
+
+        return ARMOR_MATERIALS.register(name,
+                () -> new ArmorMaterial(enummap, enchantmentValue, equipSound, repairIngridient, layers, toughness, knockbackResistance)
+        );
     }
 
-    @Override
-    public int getDefenseForSlot(EquipmentSlot slot) {
-        return this.damageReductionAmountArray[slot.getIndex()];
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantability;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return this.soundEvent;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairMaterial.get();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public float getToughness() {
-        return this.toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return this.knockbackResistance;
+    @ApiStatus.Internal
+    public static void register(IEventBus eventBus) {
+        ARMOR_MATERIALS.register(eventBus);
     }
 }

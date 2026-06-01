@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X",
+    "$ "
+  ],
+  "key": {
+    "X": {
+      "item": "rainbowcompound:obsidianite_ingot"
+    },
+    "$": {
+      "item": "rainbowcompound:obsidianite_stick"
+    }
+  },
+  "result": {
+    "id": "rainbowcompound:obsidianite_knife",
+    "count": 1
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "farmersdelight"
+  } ]
+}

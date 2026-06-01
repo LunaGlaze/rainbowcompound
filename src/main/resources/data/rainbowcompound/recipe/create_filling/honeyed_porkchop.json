@@ -1,0 +1,18 @@
+{
+    "type": "create:filling",
+    "ingredients": [
+        {
+            "item": "minecraft:cooked_porkchop"
+        },
+        {
+            "type": "neoforge:tag",
+            "tag": "c:honey",
+            "amount": 250
+        }
+    ],
+    "results": [
+        {
+            "id": "rainbowcompound:honeyed_porkchop"
+        }
+    ]
+}

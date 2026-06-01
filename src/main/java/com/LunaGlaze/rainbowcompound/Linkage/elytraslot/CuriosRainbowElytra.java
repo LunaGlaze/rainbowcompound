@@ -2,49 +2,40 @@ package com.LunaGlaze.rainbowcompound.Linkage.elytraslot;
 
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
-import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
+import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
-import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-import top.theillusivec4.curios.api.CuriosApi;
+import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
+public class CuriosRainbowElytra extends CuriosModElytraItem {
+    private static final int defense = 6;
+    private static final float toughness = 3;
 
-@Mod.EventBusSubscriber
-public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
 
-    private static final UUID uuid = UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D");
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+    private final ItemAttributeModifiers defaultModifiers;
 
     public CuriosRainbowElytra() {
-        super(new Properties().tab(CreativeModeTabGroup.group).fireResistant().durability(1632).rarity(Rarity.UNCOMMON));
+        super(new Properties().fireResistant().durability(1632).rarity(Rarity.UNCOMMON));
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        int defense = this.getDefense();
-        float toughness = this.getToughness();
-        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", defense, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor modifier", toughness, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = builder.build();
+        this.defaultModifiers = ItemAttributeModifiers.builder()
+                .add(Attributes.ARMOR, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "base_arm"), this.getDefense(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+                .add(Attributes.ARMOR, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "base_at"), this.getToughness(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+                .build();
     }
 
     @Override
@@ -57,11 +48,11 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
         return pRepair.is(ItemsItemRegistry.rainbowcompound.get());
     }
     private int getDefense(){
-        return 6;
+        return defense;
     }
 
     private float getToughness(){
-        return 3;
+        return toughness;
     }
 
     @Override
@@ -70,33 +61,31 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
-        return pEquipmentSlot == EquipmentSlot.CHEST ? this.defaultModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
+    public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers() {
+        return this.defaultModifiers;
     }
 
-    @SubscribeEvent(priority = EventPriority.LOW)
-    @OnlyIn(Dist.CLIENT)
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
-        if(player == null || !CuriosApi.getCuriosHelper().getCuriosHandler(player).isPresent()){ return; }
-        Item item = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
-        ICuriosItemHandler curiosInventory = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve().get();
-        AtomicBoolean curioE = new AtomicBoolean(false);
-        curiosInventory.getStacksHandler("back").ifPresent(slotInventory -> {
-            int slotsnum = slotInventory.getSlots();
-            for (int i=0 ; i<slotsnum && !curioE.get(); i++){
-                ItemStack eqCurio = slotInventory.getStacks().getStackInSlot(i);
-                if (eqCurio.getItem() instanceof CuriosRainbowElytra){
-                    curioE.set(true);
-                }
-            }
-        });
-        if(item instanceof CuriosRainbowElytra || curioE.get()) {
-            if (player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
+        if (slotContext.identifier().equals("back")) {
+            Multimap<Holder<Attribute>, AttributeModifier> modifiers = super.getAttributeModifiers(slotContext, id, stack);
+            modifiers.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), defense, AttributeModifier.Operation.ADD_VALUE));
+            modifiers.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID, "armor_modifier"), toughness, AttributeModifier.Operation.ADD_VALUE));
+            return modifiers;
+        }
+        return ((ICurio) () -> ItemStack.EMPTY).getAttributeModifiers(slotContext, id);
+    }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity livingEntity = slotContext.entity();
+        if(livingEntity.level().isClientSide){
+            if (livingEntity instanceof Player player && player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed())
+            {
                 Vec3 lookAngle = player.getLookAngle();
                 Vec3 flyAngle = player.getDeltaMovement();
-                double d = 0.1;
-                double i = 1.5;
+                double d = 0.15;
+                double i = 1.6;
                 double t = 0.5;
                 double c = LunaConfig.ELYTRA_SPEED.get();
                 player.setDeltaMovement(flyAngle.add(
@@ -109,13 +98,25 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
 
     @Override
     public boolean elytraFlightTick(ItemStack stack, net.minecraft.world.entity.LivingEntity entity, int flightTicks) {
-        if(!entity.level.isClientSide) {
+        if(entity.level().isClientSide){
+            if (entity instanceof Player player && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed())
+            {
+                Vec3 lookAngle = player.getLookAngle();
+                Vec3 flyAngle = player.getDeltaMovement();
+                double d = 0.15;
+                double i = 1.6;
+                double t = 0.5;
+                double c = LunaConfig.ELYTRA_SPEED.get();
+                player.setDeltaMovement(flyAngle.add(
+                        (lookAngle.x * d + (lookAngle.x * i - flyAngle.x) * t) * c,
+                        (lookAngle.y * d + (lookAngle.y * i - flyAngle.y) * t) * c,
+                        (lookAngle.z * d + (lookAngle.z * i - flyAngle.z) * t) * c));
+            }
+        }
+        if(!entity.level().isClientSide) {
             int nextFlightTick = flightTicks + 1;
             if (nextFlightTick % 10 == 0) {
-                if ((flightTicks) % 25 == 0 && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
-                    stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(EquipmentSlot.CHEST));
-                }
-                entity.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ELYTRA_FREE_FALL);
+                entity.gameEvent(GameEvent.ELYTRA_GLIDE);
             }
         }
         return true;

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:zinc_rod",
+    {"id":"create_sa:zinc_handle","required": false}
+  ]
+}

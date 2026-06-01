@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ObsidianiteElytraLayer<T extends LivingEntity, M extends EntityModel<T>> extends ElytraLayer<T, M> {
@@ -31,7 +31,6 @@ public class ObsidianiteElytraLayer<T extends LivingEntity, M extends EntityMode
 
     @Override
     public ResourceLocation getElytraTexture(ItemStack stack,  T entity) {
-        String name = stack.getItem().toString();
-        return new ResourceLocation(LunaUtils.MOD_ID,"textures/entity/"+name+".png");
+        return ResourceLocation.fromNamespaceAndPath(LunaUtils.MOD_ID,"textures/entity/obsidianite_elytra");
     }
 }

@@ -1,0 +1,29 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:ingots"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_wart_block"
+    },
+    {
+      "item": "minecraft:nether_brick"
+    }
+  ],
+  "heatRequirement": "heated",
+  "results": [
+    {
+      "id": "rainbowcompound:netherwartite_ingot"
+    }
+  ]
+}

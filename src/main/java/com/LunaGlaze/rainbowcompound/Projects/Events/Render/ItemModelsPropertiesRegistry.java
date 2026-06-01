@@ -4,23 +4,24 @@ import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Tools.ToolsItemRegistry;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = LunaUtils.MOD_ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = LunaUtils.MOD_ID, value = Dist.CLIENT)
 public class ItemModelsPropertiesRegistry {
     @SubscribeEvent
     public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(ToolsItemRegistry.obsidianitebow.get(), new ResourceLocation("pull"), (p_174635_, p_174636_, p_174637_, p_174638_) -> {
-                if (p_174637_ == null) {
+            ItemProperties.register(ToolsItemRegistry.obsidianitebow.get(), ResourceLocation.withDefaultNamespace("pull"), (pItemStack, pClientLevel, pLivingEntity, pSeed) -> {
+                if (pLivingEntity == null) {
                     return 0.0F;
                 } else {
-                    return p_174637_.getUseItem() != p_174635_ ? 0.0F : (float)(p_174635_.getUseDuration() - p_174637_.getUseItemRemainingTicks()) / 20.0F;
+                    return pLivingEntity.getUseItem() != pItemStack ? 0.0F : (float)(pItemStack.getUseDuration(pLivingEntity) - pLivingEntity.getUseItemRemainingTicks()) / 20.0F;
                 }
             });
+            ItemProperties.register(ToolsItemRegistry.obsidianitebow.get(), ResourceLocation.withDefaultNamespace("pulling"), (pItemStack, pClientLevel, pLivingEntity, pSeed) -> pLivingEntity != null && pLivingEntity.isUsingItem() && pLivingEntity.getUseItem() == pItemStack ? 1.0F : 0.0F);
         });
     }
 }

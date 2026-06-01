@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "base": {
+    "item": "minecraft:golden_apple"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "id": "rainbowcompound:rainbow_apple"
+  }
+}

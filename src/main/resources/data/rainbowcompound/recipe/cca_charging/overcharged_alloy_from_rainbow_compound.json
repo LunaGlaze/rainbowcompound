@@ -1,0 +1,21 @@
+{
+    "type": "createaddition:charging",
+    "conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "createaddition"
+        }
+    ],
+    "energy": 1024,
+    "ingredients": [
+        {
+            "item": "rainbowcompound:rainbow_compound"
+        }
+    ],
+    "max_charge_rate": 1024,
+    "results": [
+        {
+            "id": "rainbowcompound:overcharged_alloy"
+        }
+    ]
+}

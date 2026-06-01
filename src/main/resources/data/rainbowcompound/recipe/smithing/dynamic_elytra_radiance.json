@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:phantom_membrane"
+  },
+  "base": {
+    "tag": "rainbowcompound:dynamic_elytra"
+  },
+  "addition": {
+    "item": "minecraft:glow_ink_sac"
+  },
+  "result": {
+    "id": "rainbowcompound:dynamic_elytra_radiance"
+  }
+}

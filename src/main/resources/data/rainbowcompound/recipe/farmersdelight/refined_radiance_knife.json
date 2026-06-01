@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X",
+    "$ "
+  ],
+  "key": {
+    "X": {
+      "item": "create:refined_radiance"
+    },
+    "$": {
+      "tag": "create:zinc_handle"
+    }
+  },
+  "result": {
+    "id": "rainbowcompound:refined_radiance_knife",
+    "count": 1
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "farmersdelight"
+  } ]
+}

@@ -3,11 +3,10 @@ package com.LunaGlaze.rainbowcompound.Projects.Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +20,7 @@ public class RefinedRadianceNeon extends RotatedPillarBlock {
 
 
     public RefinedRadianceNeon() {
-        super(BlockBehaviour.Properties.of(Material.GLASS).strength(0.8F,4F).sound(SoundType.GLASS)
+        super(Properties.ofFullCopy(Blocks.GLASS).strength(0.8F,4F).sound(SoundType.GLASS)
                 .lightLevel((p_152686_) -> {return 14;}));
     }
 

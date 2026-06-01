@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:obsidianite_upgrade_kit"
+  },
+  "base": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "addition": {
+    "item": "rainbowcompound:obsidianite_ingot"
+  },
+  "result": {
+    "id": "rainbowcompound:obsidianite_hoe"
+  }
+}

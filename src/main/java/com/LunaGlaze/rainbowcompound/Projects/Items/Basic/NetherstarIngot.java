@@ -1,12 +1,16 @@
 package com.LunaGlaze.rainbowcompound.Projects.Items.Basic;
 
-import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SimpleFoiledItem;
+import net.minecraft.world.item.Item;
 
-public class NetherstarIngot extends SimpleFoiledItem {
+public class NetherstarIngot extends Item {
     public NetherstarIngot() {
-        super(new Properties().tab(CreativeModeTabGroup.group).fireResistant().rarity(Rarity.UNCOMMON));
+        super(new Properties().fireResistant().rarity(Rarity.UNCOMMON));
     }
 
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
 }

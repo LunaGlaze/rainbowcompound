@@ -1,0 +1,21 @@
+{
+    "type": "createaddition:charging",
+    "conditions": [
+        {
+            "type": "neoforge:mod_loaded",
+            "modid": "createaddition"
+        }
+    ],
+    "energy": 16777216,
+    "ingredients": [
+        {
+            "item": "create:chromatic_compound"
+        }
+    ],
+    "max_charge_rate": 65536,
+    "results": [
+        {
+            "id": "rainbowcompound:overcharged_alloy"
+        }
+    ]
+}

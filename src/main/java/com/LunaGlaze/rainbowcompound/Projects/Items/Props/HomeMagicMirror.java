@@ -1,11 +1,9 @@
 package com.LunaGlaze.rainbowcompound.Projects.Items.Props;
 
-import com.LunaGlaze.rainbowcompound.Core.Group.CreativeModeTabGroup;
 import com.LunaGlaze.rainbowcompound.LunaUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -16,8 +14,8 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.annotation.Nullable;
@@ -27,13 +25,8 @@ import java.util.Objects;
 
 public class HomeMagicMirror extends Item {
     public HomeMagicMirror() {
-        super(new Properties().tab(CreativeModeTabGroup.group).rarity(Rarity.UNCOMMON)
+        super(new Properties().rarity(Rarity.UNCOMMON)
                 .stacksTo( 1 ).durability(16) );
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return true;
     }
 
     @Override
@@ -69,7 +62,7 @@ public class HomeMagicMirror extends Item {
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced){
-        tooltip.add(new TranslatableComponent(LunaUtils.MOD_ID + ".tooltip.homemagicmirror", new Object[0]).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable(LunaUtils.MOD_ID + ".tooltip.homemagicmirror", new Object[0]).withStyle(ChatFormatting.GRAY));
     }
 
 }

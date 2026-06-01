@@ -1,0 +1,94 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "rainbowcompound:shadow_steel_sheet"
+  },
+  "transitional_item": {
+    "id": "rainbowcompound:incomplete_shadow_mechanism"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "create:precision_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "rainbowcompound:integrated_circuit"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_shadow_mechanism"
+        },
+        {
+          "tag": "c:nuggets/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_shadow_mechanism"
+        }
+      ]
+    }
+  ],
+  "loops": 1,
+  "results": [
+    {
+      "id": "rainbowcompound:shadow_mechanism",
+      "chance": 86.0
+    },
+    {
+      "id": "rainbowcompound:shadow_steel_sheet",
+      "chance": 8.0
+    },
+    {
+      "id": "rainbowcompound:integrated_circuit",
+      "chance": 3.0
+    },
+    {
+      "id": "create:precision_mechanism",
+      "chance": 3.0
+    }
+  ]
+}

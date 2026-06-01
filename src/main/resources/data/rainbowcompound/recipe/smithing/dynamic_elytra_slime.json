@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:phantom_membrane"
+  },
+  "base": {
+    "tag": "rainbowcompound:dynamic_elytra"
+  },
+  "addition": {
+    "item": "rainbowcompound:slimeite_ingot"
+  },
+  "result": {
+    "id": "rainbowcompound:dynamic_elytra_slime"
+  }
+}

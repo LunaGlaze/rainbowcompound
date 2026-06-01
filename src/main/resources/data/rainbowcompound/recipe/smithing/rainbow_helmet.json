@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "base": {
+    "item": "rainbowcompound:obsidianite_helmet"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "id": "rainbowcompound:rainbow_helmet"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "rainbowcompound:radiance_mechanism"
+  },
+  "transitional_item": {
+    "id": "rainbowcompound:incomplete_radiance_resonant_assembly"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        },
+        {
+          "item": "create:electron_tube"
+        }
+      ],
+      "results": [
+        {
+          "id": "rainbowcompound:incomplete_radiance_resonant_assembly"
+        }
+      ]
+    }
+  ],
+  "loops": 2,
+  "results": [
+    {
+      "id": "rainbowcompound:radiance_resonant_assembly",
+      "chance": 90.0
+    },
+    {
+      "id": "rainbowcompound:radiance_mechanism",
+      "chance": 8.0
+    },
+    {
+      "id": "rainbowcompound:integrated_circuit",
+      "chance": 1.0
+    },
+    {
+      "id": "create:precision_resonant_assembly",
+      "chance": 1.0
+    }
+  ]
+}

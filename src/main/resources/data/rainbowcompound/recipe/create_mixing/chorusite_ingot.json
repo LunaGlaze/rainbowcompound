@@ -1,0 +1,38 @@
+{
+    "type": "create:mixing",
+    "ingredients": [
+        {
+            "tag": "c:nuggets/zinc"
+        },
+        {
+            "tag": "c:nuggets/zinc"
+        },
+        {
+            "tag": "c:nuggets/iron"
+        },
+        {
+            "tag": "c:nuggets/iron"
+        },
+        {
+            "item": "minecraft:dragon_breath"
+        },
+        {
+            "item": "minecraft:popped_chorus_fruit"
+        },
+        {
+            "item": "minecraft:popped_chorus_fruit"
+        },
+        {
+            "item": "minecraft:popped_chorus_fruit"
+        },
+        {
+            "item": "minecraft:popped_chorus_fruit"
+        }
+    ],
+    "heatRequirement": "heated",
+    "results": [
+        {
+            "id": "rainbowcompound:chorusite_ingot"
+        }
+    ]
+}

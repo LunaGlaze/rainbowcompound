@@ -1,0 +1,31 @@
+{
+    "type": "create:compacting",
+    "ingredients": [
+        {
+            "item": "minecraft:diamond"
+        },
+        {
+            "item": "create:sturdy_sheet"
+        },
+        {
+            "item": "create:sturdy_sheet"
+        },
+        {
+            "item": "minecraft:obsidian"
+        },
+        {
+            "item": "create:andesite_alloy"
+        },
+        {
+            "type": "neoforge:single",
+            "fluid": "minecraft:lava",
+            "amount": 100
+        }
+    ],
+    "heatRequirement": "heated",
+    "results": [
+        {
+            "id": "rainbowcompound:obsidianite_ingot"
+          }
+    ]
+}
