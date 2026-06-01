@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {"id":"rainbowcompound:shadow_steel_kitchen_knife","required": false},
+    {"id":"rainbowcompound:refined_radiance_kitchen_knife","required": false},
+    {"id":"rainbowcompound:obsidianite_kitchen_knife","required": false},
+    {"id":"rainbowcompound:rainbow_kitchen_knife","required": false}
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    {"id":"rainbowcompound:dynamic_elytra_rainbow","required": false},
+    {"id":"rainbowcompound:dynamic_elytra_flandre","required": false}
+  ]
+}

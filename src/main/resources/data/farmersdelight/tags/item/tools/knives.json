@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "rainbowcompound:shadow_steel_knife",
-    "rainbowcompound:refined_radiance_knife",
-    "rainbowcompound:obsidianite_knife",
-    "rainbowcompound:rainbow_knife"
+    {"id":"rainbowcompound:shadow_steel_knife","required": false},
+    {"id":"rainbowcompound:refined_radiance_knife","required": false},
+    {"id":"rainbowcompound:obsidianite_knife","required": false},
+    {"id":"rainbowcompound:rainbow_knife","required": false}
   ]
 }

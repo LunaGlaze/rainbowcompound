@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "rainbowcompound:obsidianite_sword",
+    {"id":"rainbowcompound:obsidianite_knife","required": false},
+    {"id":"rainbowcompound:obsidianite_kitchen_knife","required": false},
+    "rainbowcompound:rainbow_sword",
+    {"id":"rainbowcompound:rainbow_knife","required": false},
+    {"id":"rainbowcompound:rainbow_kitchen_knife","required": false},
+    {"id":"rainbowcompound:shadow_steel_knife","required": false},
+    {"id":"rainbowcompound:shadow_steel_kitchen_knife","required": false},
+    "rainbowcompound:refined_radiance_scythes",
+    {"id":"rainbowcompound:refined_radiance_knife","required": false},
+    {"id":"rainbowcompound:refined_radiance_kitchen_knife","required": false}
+  ]
+}

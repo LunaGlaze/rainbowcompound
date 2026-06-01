@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    {"id":"rainbowcompound:obsidianite_elytra","required": false},
+    {"id":"#rainbowcompound:dynamicelytra_rainbow","required": false},
+    {"id":"#rainbowcompound:dynamic_elytra","required": false}
+  ]
+}
