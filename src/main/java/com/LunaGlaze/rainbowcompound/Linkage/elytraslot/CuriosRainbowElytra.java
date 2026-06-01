@@ -2,11 +2,11 @@ package com.LunaGlaze.rainbowcompound.Linkage.elytraslot;
 
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
-import com.LunaGlaze.rainbowcompound.Core.Tab.RainbowcompoundTab;
-import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
+import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -22,19 +22,17 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Mod.EventBusSubscriber
-public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
+public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurioItem {
 
     private static final UUID uuid = UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D");
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
@@ -77,6 +75,17 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
         return pEquipmentSlot == EquipmentSlot.CHEST ? this.defaultModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
 
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        if (slotContext.identifier().equals("back")) {
+            Multimap<Attribute, AttributeModifier> result = super.getAttributeModifiers(slotContext, uuid, stack);
+            result.put(Attributes.ARMOR, new AttributeModifier(uuid,new ResourceLocation(LunaUtils.MOD_ID, "base_arm").toString(), getDefense(), AttributeModifier.Operation.ADDITION));
+            result.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid,new ResourceLocation(LunaUtils.MOD_ID, "base_at").toString(), getToughness(), AttributeModifier.Operation.ADDITION));
+            return result;
+        }
+        return ((ICurio) () -> ItemStack.EMPTY).getAttributeModifiers(slotContext, uuid);
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW)
     @OnlyIn(Dist.CLIENT)
     public static void onPlayerTickClient(TickEvent.PlayerTickEvent event) {
@@ -98,8 +107,8 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
             if (player.isFallFlying() && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
                 Vec3 lookAngle = player.getLookAngle();
                 Vec3 flyAngle = player.getDeltaMovement();
-                double d = 0.1;
-                double i = 1.5;
+                double d = 0.15;
+                double i = 1.6;
                 double t = 0.5;
                 double c = LunaConfig.ELYTRA_SPEED.get();
                 player.setDeltaMovement(flyAngle.add(
@@ -115,9 +124,6 @@ public class CuriosRainbowElytra extends CuriosModElytraItem implements ICurio {
         if(!entity.level().isClientSide) {
             int nextFlightTick = flightTicks + 1;
             if (nextFlightTick % 10 == 0) {
-                if ((flightTicks) % 25 == 0 && ElytraFlyKey.ELYTRA_FLY_KEY.isPressed()) {
-                    stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(EquipmentSlot.CHEST));
-                }
                 entity.gameEvent(GameEvent.ELYTRA_GLIDE);
             }
         }

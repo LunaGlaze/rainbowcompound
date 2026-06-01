@@ -174,6 +174,7 @@ dependencies {
     // LINK_CF
     implementation fg.deobf("curse.maven:farmers-delight-398521:5878214")
     implementation fg.deobf("curse.maven:createaddition-439890:5658602")
+    implementation fg.deobf("curse.maven:kaleidoscope-cookery-1309203:7966280")
 
 
     // For more info...

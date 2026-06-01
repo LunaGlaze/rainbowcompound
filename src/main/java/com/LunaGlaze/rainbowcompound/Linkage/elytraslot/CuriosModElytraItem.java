@@ -1,21 +1,45 @@
 package com.LunaGlaze.rainbowcompound.Linkage.elytraslot;
 
 import com.LunaGlaze.rainbowcompound.Core.Class.ModElytraItem;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
+import com.LunaGlaze.rainbowcompound.LunaUtils;
+import com.google.common.collect.Multimap;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.caelus.api.CaelusApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.UUID;
 
-public class CuriosModElytraItem extends ModElytraItem implements ICurio {
+public class CuriosModElytraItem extends ModElytraItem implements ICurioItem {
 
+
+    public CuriosModElytraItem(Properties pProperties) {
+        super(pProperties);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        if (slotContext.identifier().equals("back")) {
+            Multimap<Attribute, AttributeModifier> result = ICurioItem.super.getAttributeModifiers(slotContext, uuid, stack);
+            result.put(CaelusApi.getInstance().getFlightAttribute(), new AttributeModifier(uuid,new ResourceLocation(LunaUtils.MOD_ID, "elytra").toString(), 1, AttributeModifier.Operation.ADDITION));
+            return result;
+        }
+        return ((ICurio) () -> ItemStack.EMPTY).getAttributeModifiers(slotContext, uuid);
+    }
+
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        AttributeInstance attribute = slotContext.entity().getAttribute(CaelusApi.getInstance().getFlightAttribute());
+        if (Objects.isNull(attribute)) return false;
+        return attribute.getValue() < 1;
+    }
+/*
     //public ItemStack stack = getStack();
     public CuriosModElytraItem(Item.Properties pProperties) {
         super(pProperties);
@@ -50,4 +74,5 @@ public class CuriosModElytraItem extends ModElytraItem implements ICurio {
             stack[0].elytraFlightTick(livingEntity, ticks);
         }
     }
+ */
 }

@@ -2,7 +2,9 @@ package com.LunaGlaze.rainbowcompound.Core.Tab;
 
 import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
 import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.farmersdelightItemRegistry;
+import com.LunaGlaze.rainbowcompound.Linkage.kaleidoscopecookery.KCItemRegistry;
 import com.LunaGlaze.rainbowcompound.LunaUtils;
+import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCABlockRegistryTterrag;
 import com.LunaGlaze.rainbowcompound.Projects.Blocks.BlocksItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
@@ -10,6 +12,8 @@ import com.LunaGlaze.rainbowcompound.Projects.Items.Basic.ItemsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Foods.FoodsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Props.PropsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Tools.ToolsItemRegistry;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -25,6 +29,8 @@ public class RainbowcompoundTab {
     public static boolean isCuriousElytraLoaded = false;
 
     public static boolean isCreateCraftAddLoaded = false;
+
+    public static boolean isKaleidoscopeCookeryLoaded = false;
 
     public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, LunaUtils.MOD_ID);
     public static RegistryObject<CreativeModeTab> MOD_TAB = REGISTRY.register("rainbowcompound_group", () -> CreativeModeTab.builder()
@@ -128,6 +134,11 @@ public class RainbowcompoundTab {
                     output.accept(new ItemStack((ItemLike)farmersdelightItemRegistry.enchantedgoldenapplestew.get()));
                     output.accept(new ItemStack((ItemLike)farmersdelightItemRegistry.rainbowapplestew.get()));*/
                 }
+                if (isKaleidoscopeCookeryLoaded) {
+                    for (RegistryObject<Item> item:LunaUtils.getItemRegistries(KCItemRegistry.class)) {
+                        output.accept(new ItemStack(item.get()));
+                    }
+                }
                 // Curios
                     for (RegistryObject<Item> item:LunaUtils.getItemRegistries(CuriosElytraItemRegistry.class)) {
                         output.accept(new ItemStack(item.get()));
@@ -148,9 +159,14 @@ public class RainbowcompoundTab {
                 if (isCreateCraftAddLoaded) {
                     for (RegistryObject<Item> item:LunaUtils.getItemRegistries(CCAItemRegistry.class)) {
                         output.accept(new ItemStack((ItemLike) item.get()));
-                    }/*
-                    output.accept(new ItemStack((ItemLike)CCAItemRegistry.overchargedalloy.get()));*/
+                    }
+                    output.accept(new ItemStack((ItemLike) CCABlockRegistryTterrag.OVERCHARGED_CASING.get()));
                 }
+                //Create Hide Items
+                output.accept(new ItemStack((ItemLike) AllItems.REFINED_RADIANCE));
+                output.accept(new ItemStack((ItemLike) AllItems.SHADOW_STEEL));
+                output.accept(new ItemStack((ItemLike) AllBlocks.REFINED_RADIANCE_CASING));
+                output.accept(new ItemStack((ItemLike) AllBlocks.SHADOW_STEEL_CASING));
             })
             .build()
     );

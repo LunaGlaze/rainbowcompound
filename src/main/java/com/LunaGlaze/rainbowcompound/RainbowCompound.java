@@ -1,12 +1,12 @@
 package com.LunaGlaze.rainbowcompound;
 
-import com.LunaGlaze.rainbowcompound.Core.Curios.Curios;
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
 import com.LunaGlaze.rainbowcompound.Core.Tab.RainbowcompoundTab;
 import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
-import com.LunaGlaze.rainbowcompound.Linkage.elytraslot.CuriosElytra;
 import com.LunaGlaze.rainbowcompound.Linkage.farmersdelight.farmersdelightItemRegistry;
+import com.LunaGlaze.rainbowcompound.Linkage.kaleidoscopecookery.KCItemRegistry;
+import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCABlockRegistryTterrag;
 import com.LunaGlaze.rainbowcompound.Projects.Effect.EffectRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
@@ -40,6 +40,7 @@ public class RainbowCompound {
 
     public static boolean isFarmersDelightLoaded = false;
     public static boolean isCreateCraftAddLoaded = false;
+    public static boolean isKaleidoscopeCookeryLoaded = false;
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(LunaUtils.MOD_ID);
 
@@ -49,6 +50,7 @@ public class RainbowCompound {
 
         isFarmersDelightLoaded = ModList.get().isLoaded("farmersdelight");
         isCreateCraftAddLoaded = ModList.get().isLoaded("createaddition");
+        isKaleidoscopeCookeryLoaded = ModList.get().isLoaded("kaleidoscope_cookery");
 
         onCreate(modEventBus);
         FoodsItemRegistry.ITEMS.register(modEventBus);
@@ -60,8 +62,6 @@ public class RainbowCompound {
         BlocksItemRegistry.ITEMS.register(modEventBus);
         EffectRegistry.EFFECTS.register(modEventBus);
 
-        // 饰品栏鞘翅待修复
-        CuriosElytra.init(modEventBus, forgeEventBus);
         CuriosElytraItemRegistry.ITEMS.register(modEventBus);
         RainbowcompoundTab.isCuriousElytraLoaded = true;
 
@@ -69,16 +69,19 @@ public class RainbowCompound {
             farmersdelightItemRegistry.ITEMS.register(modEventBus);
             RainbowcompoundTab.isFarmersDelightLoaded = true;
         }
+        if(isKaleidoscopeCookeryLoaded) {
+            KCItemRegistry.ITEMS.register(modEventBus);
+            RainbowcompoundTab.isKaleidoscopeCookeryLoaded = true;
+        }
         if(isCreateCraftAddLoaded) {
             CCAItemRegistry.ITEMS.register(modEventBus);
+            CCABlockRegistryTterrag.register();
             RainbowcompoundTab.isCreateCraftAddLoaded = true;
         }
 
         RainbowcompoundTab.REGISTRY.register(modEventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LunaConfig.COMMON_CONFIG);
-
-        Curios.init(modEventBus, forgeEventBus);
     }
     public static void onCreate(IEventBus modEventBus) {
 

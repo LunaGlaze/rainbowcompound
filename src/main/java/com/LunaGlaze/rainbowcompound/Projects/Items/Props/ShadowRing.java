@@ -3,6 +3,7 @@ package com.LunaGlaze.rainbowcompound.Projects.Items.Props;
 import com.LunaGlaze.rainbowcompound.LunaUtils;
 import com.LunaGlaze.rainbowcompound.Projects.Effect.EffectRegistry;
 import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.ArmorsItemRegistry;
+import com.LunaGlaze.rainbowcompound.Projects.Items.Armors.CuriosElytraItemRegistry;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -51,6 +52,14 @@ public class ShadowRing extends Item implements ICurioItem {
         }else removeAttributeModifiers(livingEntity);
     }
 
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        LivingEntity livingEntity = slotContext.entity();
+        livingEntity.removeEffect(EffectRegistry.resonance_rainbow.get());
+        removeAttributeModifiers(slotContext.entity());
+        ICurioItem.super.onUnequip(slotContext, newStack, stack);
+    }
+
     public int RainbowKit(SlotContext slotContext) {
         int i = 0;
         LivingEntity livingEntity = slotContext.entity();
@@ -61,7 +70,9 @@ public class ShadowRing extends Item implements ICurioItem {
         if(head == ArmorsItemRegistry.rainbowhelmet.get()){
             i=i+1;
         }
-        if(chest == ArmorsItemRegistry.rainbowchestplate.get()){
+        if(chest == ArmorsItemRegistry.rainbowchestplate.get() ||
+                chest == CuriosElytraItemRegistry.dynamicelytra_rainbow.get() ||
+                chest == CuriosElytraItemRegistry.dynamicelytra_flandre.get()){
             i=i+1;
         }
         if(legs == ArmorsItemRegistry.rainbowleggings.get()){

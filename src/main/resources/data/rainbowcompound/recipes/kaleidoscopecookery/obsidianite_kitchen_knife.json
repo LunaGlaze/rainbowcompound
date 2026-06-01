@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "X$"
+  ],
+  "key": {
+    "X": {
+      "item": "rainbowcompound:obsidianite_ingot"
+    },
+    "$": {
+      "item": "rainbowcompound:obsidianite_stick"
+    }
+  },
+  "result": {
+    "item": "rainbowcompound:obsidianite_kitchen_knife",
+    "count": 1
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "kaleidoscope_cookery"
+  } ]
+}

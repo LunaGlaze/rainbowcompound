@@ -19,5 +19,9 @@
   "result": {
     "item": "rainbowcompound:overcharged_casing",
     "count": 4
-  }
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  } ]
 }

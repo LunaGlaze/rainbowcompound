@@ -7,7 +7,7 @@
 	  "  Z"
 	],
 	"key": {
-	  "Z":{"item":"create:zinc_ingot"},
+	  "Z":{"tag": "create:zinc_handle"},
 	  "R":{"item":"rainbowcompound:refined_radiance_sheet"}
 	},
 	"result": {"item":"rainbowcompound:refined_radiance_scythes",

@@ -12,9 +12,11 @@
   "toolLevel": 0,
   "toolEfficiency": 2,
   "effects": {
-    "intuit": 1,
-    "**generic.attack_damage": 0.1,
-    "criticalStrike": [10, 2]
+    "intuit": 2,
+    "criticalStrike": [30, 2]
+  },
+  "attributes": {
+    "**generic.attack_damage": 0.2
   },
   "tints": {
     "glyph": "e8eef2",

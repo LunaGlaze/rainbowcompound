@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "rainbowcompound:rainbow_upgrade_kit"
+  },
+  "base": {
+    "item": "kaleidoscope_cookery:netherite_kitchen_knife"
+  },
+  "addition": {
+    "item": "rainbowcompound:rainbow_compound"
+  },
+  "result": {
+    "item": "rainbowcompound:rainbow_kitchen_knife"
+  },
+  "conditions": [ {
+    "type": "forge:mod_loaded",
+    "modid": "kaleidoscope_cookery"
+  } ]
+}

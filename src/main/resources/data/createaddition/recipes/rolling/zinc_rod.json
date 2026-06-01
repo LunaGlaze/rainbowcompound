@@ -1,0 +1,14 @@
+{
+	"type":"createaddition:rolling",
+	"ingredients": [
+		{
+			"item": "create:zinc_ingot"
+		}
+	],
+	"results": [
+		{
+			"id": "rainbowcompound:zinc_rod",
+			"count": 1
+		}
+	]
+}
