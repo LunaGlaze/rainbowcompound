@@ -41,7 +41,6 @@ public class RegistryManager {
         // Create Crafts and additions Linkage
         if (RainbowCompound.isCreateCraftAddLoaded) {
             CCAItemRegistry.ITEMS.register(modEventBus);
-            CCABlockRegistryTterrag.register();
         }
 
         // Farmer's Delight Linkage

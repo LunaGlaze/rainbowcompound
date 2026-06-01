@@ -13,7 +13,7 @@
       "item": "rainbowcompound:overcharged_alloy"
     },
     "S": {
-      "tag": "forge:glass/colorless"
+      "tag": "c:glass_blocks/colorless"
     }
   },
   "result": {

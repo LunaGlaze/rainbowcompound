@@ -176,6 +176,8 @@ dependencies {
     // Link from CF
     implementation("curse.maven:farmers-delight-398521:${delight_version}")
     implementation("curse.maven:kaleidoscope-cookery-1309203:${cookery_version}")
+    //implementation("curse.maven:create-stuff-additions-466792:${createsa_version}")
+    //implementation("curse.maven:createaddition-439890:${createaddition_version}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

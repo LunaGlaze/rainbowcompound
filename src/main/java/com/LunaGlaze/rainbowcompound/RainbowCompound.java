@@ -3,6 +3,8 @@ package com.LunaGlaze.rainbowcompound;
 import com.LunaGlaze.rainbowcompound.Core.Date.KeyBoard.ElytraFlyKey;
 import com.LunaGlaze.rainbowcompound.Core.Date.LunaConfig;
 import com.LunaGlaze.rainbowcompound.Core.Registries.RegistryManager;
+import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCABlockRegistryTterrag;
+import com.LunaGlaze.rainbowcompound.Linkage.createaddition.CCAItemRegistry;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.AllItems;
@@ -36,8 +38,8 @@ public class RainbowCompound {
         isCuriousElytraLoaded = ModList.get().isLoaded("caelus");
         isKaleidoscopeCookeryLoaded = ModList.get().isLoaded("kaleidoscope_cookery");
 
-        //onCreate(modEventBus);
         RegistryManager.register(modEventBus);
+        onCreate(modEventBus);
 
         ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, LunaConfig.COMMON_CONFIG);
     }
@@ -46,7 +48,13 @@ public class RainbowCompound {
 
         REGISTRATE.registerEventListeners(modEventBus);
         modEventBus.addListener(RainbowCompound::addCreative);
+        if (isCreateCraftAddLoaded) {
+            CCABlockRegistryTterrag.register();
+        }
         //IncompleteItems.register();
+    }
+    public static CreateRegistrate registrate() {
+        return REGISTRATE;
     }
 
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {

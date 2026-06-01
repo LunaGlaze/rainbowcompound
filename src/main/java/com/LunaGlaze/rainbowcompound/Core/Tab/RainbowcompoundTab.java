@@ -52,7 +52,7 @@ public class RainbowcompoundTab {
                 // Create Additions Linkage
                 if (RainbowCompound.isCreateCraftAddLoaded) {
                     CCAItemRegistry.ITEMS.getEntries().stream().map(Supplier::get).forEach(output::accept);
-                    output.accept(new ItemStack((ItemLike) CCABlockRegistryTterrag.OVERCHARGED_CASING.get()));
+                    //output.accept(new ItemStack(CCABlockRegistryTterrag.OVERCHARGED_CASING));
                 }
                 // Farmers' Delight Linkage
                 if (RainbowCompound.isFarmersDelightLoaded) {
