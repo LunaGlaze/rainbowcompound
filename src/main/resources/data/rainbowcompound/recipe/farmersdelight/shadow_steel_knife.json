@@ -16,8 +16,10 @@
     "id": "rainbowcompound:shadow_steel_knife",
     "count": 1
   },
-  "conditions": [ {
-    "type": "forge:mod_loaded",
-    "modid": "farmersdelight"
-  } ]
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ]
 }

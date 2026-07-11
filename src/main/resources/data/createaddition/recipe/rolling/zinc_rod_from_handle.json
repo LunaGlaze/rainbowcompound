@@ -7,8 +7,10 @@
     "item": "rainbowcompound:zinc_rod",
     "count": 1
   },
-  "conditions": [ {
-    "type": "forge:mod_loaded",
-    "modid": "create_sa"
-  } ]
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create_sa"
+    }
+  ]
 }

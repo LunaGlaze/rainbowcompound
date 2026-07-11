@@ -16,8 +16,10 @@
     "id": "rainbowcompound:refined_radiance_kitchen_knife",
     "count": 1
   },
-  "conditions": [ {
-    "type": "forge:mod_loaded",
-    "modid": "kaleidoscope_cookery"
-  } ]
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ]
 }

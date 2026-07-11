@@ -12,8 +12,10 @@
   "result": {
     "id": "rainbowcompound:rainbow_kitchen_knife"
   },
-  "conditions": [ {
-    "type": "forge:mod_loaded",
-    "modid": "kaleidoscope_cookery"
-  } ]
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ]
 }
