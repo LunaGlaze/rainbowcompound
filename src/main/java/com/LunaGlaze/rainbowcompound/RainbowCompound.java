@@ -11,6 +11,7 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -59,11 +60,18 @@ public class RainbowCompound {
 
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey()) {
-            event.accept(new ItemStack(AllItems.CHROMATIC_COMPOUND.get()));
-            event.accept(new ItemStack(AllItems.SHADOW_STEEL.get()));
-            event.accept(new ItemStack(AllItems.REFINED_RADIANCE.get()));
-            event.accept(new ItemStack(AllBlocks.SHADOW_STEEL_CASING.get()));
-            event.accept(new ItemStack(AllBlocks.REFINED_RADIANCE_CASING.get()));
+            addIfAbsent(event, AllItems.CHROMATIC_COMPOUND.get());
+            addIfAbsent(event, AllItems.SHADOW_STEEL.get());
+            addIfAbsent(event, AllItems.REFINED_RADIANCE.get());
+            addIfAbsent(event, AllBlocks.SHADOW_STEEL_CASING.get());
+            addIfAbsent(event, AllBlocks.REFINED_RADIANCE_CASING.get());
+        }
+    }
+
+    private static void addIfAbsent(BuildCreativeModeTabContentsEvent event, ItemLike item) {
+        ItemStack stack = new ItemStack(item);
+        if (!event.getParentEntries().contains(stack) && !event.getSearchEntries().contains(stack)) {
+            event.accept(item);
         }
     }
 
